@@ -1,0 +1,20 @@
+# Created by trellis-cli v1.14.1
+# Documentation: https://roots.io/trellis/docs/wordpress-sites/
+
+wordpress_sites:
+  bravaterravinhos.com.br:
+    site_hosts:
+    - canonical: bravaterravinhos.com.br
+      redirects:
+      - www.bravaterravinhos.com.br
+    local_path: ../site
+    branch: master
+    repo: git@github.com:dsemblano/terravinhos.git
+    repo_subtree_path: site
+    multisite:
+      enabled: false
+    ssl:
+      enabled: false
+      provider: letsencrypt
+    cache:
+      enabled: false

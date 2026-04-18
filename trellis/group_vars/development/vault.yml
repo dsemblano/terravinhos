@@ -1,0 +1,17 @@
+# Created by trellis-cli v1.14.1
+# Documentation: https://roots.io/trellis/docs/vault/
+
+vault_mysql_root_password: bYMg5sa53etBS1n8FljmW60ZLsKfpaKNYcwi0gb8VPCk4qXcm6VY3chZjgJYkdkd
+vault_wordpress_sites:
+  bravaterravinhos.com.br:
+    admin_password: 77JXJx6Uc4ZHcvd74H4bEn913Z69OvAUeTdVPCmDtU9rFU0ficKFxo7zAPdMxRaP
+    env:
+      db_password: GgBKsw4fszst2gljaf5kfnKZRTPu0QlO16viK3Nl3U6cu2kdthqKqWZkyzjBTRpe
+      auth_key: MXYgrCtpWbPFtKGbfFXFMQjLWMsPipPlAhoobVjHph3gjh5pr175WAuhYnB3rois
+      secure_auth_key: z2cJBU1A9mGgdxIcoaTgde7IkK4762FuYbsnVnDENIRdbtEv8uRwDlflwA2qcPMv
+      logged_in_key: OhDadnEbtocbuzfwKbzsiBh1HTHWCDlnU8A74xVIXaZUK6ApAQ3NeVAHeHrfhDa7
+      nonce_key: YG8rNkh4h1Zx3dfTSElerF5ZCK4sEK7LgEeU3tNNir4jDDWx3QBOcOqQp5ZrfcPJ
+      auth_salt: NC7AMAXT3qwgX26IOA92CiCBqE43uj8zfEf883BC93X1jUBt0HNT7iRPxcJac3Vh
+      secure_auth_salt: jvhrJc4rbuhM3f6NEsFFKyOBT47U95f6wg4CBBYGd2P1H9daOlIe1pwuVxdixkVb
+      logged_in_salt: 5tWlLwI6g8eCf3ieScehExjysJiJzAYeJejKWuuULqglu1uorakVDWJhyK9LiWIv
+      nonce_salt: SuMHb5yIFxtJUbZH0jnuwyvz8Sjtp30iXc3B9o5PQbSFqAeZbneEBcZ3efmbt0d1
