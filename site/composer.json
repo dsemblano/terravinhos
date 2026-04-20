@@ -17,7 +17,14 @@
     }
   ],
   "keywords": [
-    "bedrock", "composer", "roots", "wordpress-composer", "wordpress", "wp-composer", "wp-config", "wp"
+    "bedrock",
+    "composer",
+    "roots",
+    "wordpress-composer",
+    "wordpress",
+    "wp-composer",
+    "wp-config",
+    "wp"
   ],
   "support": {
     "issues": "https://github.com/roots/bedrock/issues",
@@ -32,17 +39,43 @@
         "wp-plugin/*",
         "wp-theme/*"
       ]
+    },
+    {
+      "name": "wp-packages",
+      "type": "composer",
+      "url": "https://repo.wp-packages.org"
     }
   ],
   "require": {
     "php": ">=8.3",
     "composer/installers": "^2.2",
+    "generoi/sage-woocommerce": "^1.1",
+    "log1x/navi": "^3.1",
     "oscarotero/env": "^2.1",
     "roots/bedrock-autoloader": "^1.0",
     "roots/bedrock-disallow-indexing": "^2.0",
     "roots/wordpress": "6.9.4",
     "roots/wp-config": "1.0.0",
     "vlucas/phpdotenv": "^5.5",
+    "wp-plugin/autodescription": ">=5.1.2",
+    "wp-plugin/basic-user-avatars": ">=1.0.9",
+    "wp-plugin/better-block-editor": "^1.4",
+    "wp-plugin/contact-form-7": ">=6.0.6",
+    "wp-plugin/ewww-image-optimizer": ">=8.1.4",
+    "wp-plugin/fast-cart": "^1.2.1",
+    "wp-plugin/foogallery": ">=3.1.6",
+    "wp-plugin/gtm-kit": ">=2.7.0",
+    "wp-plugin/redirection": ">=5.5.2",
+    "wp-plugin/regenerate-thumbnails": ">=3.1.5",
+    "wp-plugin/woo-checkout-field-editor-pro": "^2.1",
+    "wp-plugin/woocommerce": "^10.6",
+    "wp-plugin/woocommerce-correios": ">=4.2.5",
+    "wp-plugin/woocommerce-extra-checkout-fields-for-brazil": "^4.0",
+    "wp-plugin/woocommerce-mercadopago": ">=8.1.0",
+    "wp-plugin/woocommerce-pdf-invoices-packing-slips": ">=4.5.2",
+    "wp-plugin/woocommerce-product-generator": "^3.2",
+    "wp-plugin/wp-mail-smtp": ">=4.4.0",
+    "wp-plugin/zoloblocks": ">=2.2.7",
     "wp-theme/twentytwentyfive": "^1.0"
   },
   "require-dev": {

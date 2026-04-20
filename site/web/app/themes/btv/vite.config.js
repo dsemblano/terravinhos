@@ -34,6 +34,9 @@ export default defineConfig({
       disableTailwindBorderRadius: false,
     }),
   ],
+  optimizeDeps: {
+    include: ['alpinejs'],
+  },
   resolve: {
     alias: {
       '@scripts': '/resources/js',

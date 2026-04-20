@@ -5,9 +5,9 @@
 
   @if (! have_posts())
     <x-alert type="warning">
-      {!! __('Sorry, but the page you are trying to view does not exist.', 'sage') !!}
+      {!! __('A página não existe. Por favor use o menu ou clique no logo', 'sage') !!}
     </x-alert>
 
-    {!! get_search_form(false) !!}
+    {{-- {!! get_search_form(false) !!} --}}
   @endif
 @endsection

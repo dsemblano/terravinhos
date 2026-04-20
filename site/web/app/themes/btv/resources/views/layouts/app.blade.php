@@ -19,7 +19,7 @@
 
       @include('sections.header')
 
-      <main id="main" class="main">
+      <main id="main" class="main prose lg:prose-xl prose-p:text-xl mx-auto max-w-none">
         @yield('content')
       </main>
 

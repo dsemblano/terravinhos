@@ -1,3 +1,4 @@
-<div class="page-header">
-  <h1>{!! $title !!}</h1>
+<div
+    class="prose-h1:mt-8 page-header container">
+    <h1 class="{{ !is_woocommerce() && !is_cart() && !is_checkout() ? ' container' : '' }}">{!! $title !!}</h1>
 </div>

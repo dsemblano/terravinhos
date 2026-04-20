@@ -2,3 +2,315 @@
 @source "../../app/**/*.php";
 @source "../**/*.blade.php";
 @source "../**/*.js";
+@plugin "@tailwindcss/typography";
+@import './fonts.css';
+
+@theme static {
+  /* --color-primary: #395144;
+  --color-secondary: #FBDC8E; */
+  /* darkmode */
+  /* --color-primary: #C5A059;
+  --color-secondary: #2C2C2C;
+  --color-tertiary: #E91E63;
+  --color-fundo: #1F1A13; */
+  /* lightmode */
+  /* --color-primary: #5D4037;
+  --color-secondary: #D7CCC8;
+  --color-tertiary: #880E4F;
+  --color-fundo: #FAFAF5; */
+  /* berry mode */
+  --color-primary: #4A0E2E;
+  --color-secondary: #C2185B;
+  --color-tertiary: #9575CD;
+  --color-fundo: #F4F3F4;
+
+  --color-section: #F4F4EF;
+  --color-footer: #ECE0DD;
+  --color-p: #504442;
+  --color-preto: #0A1215;
+  --font-heading: "Work_Sans", sans-serif;
+  --font-sansitalic: "Noto_Serif_Italic", serif;
+  --font-p: "Noto_Serif", serif;
+  /* --font-p: ui-sans-serif, system-ui, sans-serif; */
+  --arrow-link: #D68778;
+  --arrow-small: 480px;
+  --arrow-medium: 768px;
+  --arrow-large: 1024px;
+  --arrow-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+@theme {
+  --animate-fade-in: fade-in 0.8s ease-out forwards;
+  --color-nectar-gold: #D4AF37;
+}
+
+@utility reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+@utility is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 3. Para media queries, você pode usar classes normais ou utilitários separados */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* 
+@layer components {
+  #hero-wrapper {
+    @apply prose lg:prose-lg prose-h1:mt-4 prose-h1:mb-1;
+  }
+} */
+
+
+/* .container {
+  @apply bg-blue-500;
+} */
+
+
+@layer utility {
+  .container {
+    padding: var(--container-padding, 1rem);
+    margin-inline: auto;
+
+    @variant lg {
+      padding-inline: 8rem;
+    }
+
+    @variant xl {
+      padding-inline: 10rem;
+    }
+  }
+}
+
+:root {
+  color-scheme: only light;
+  --h1-height: 1.2em;
+  --animation-speed: 9s;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+/* 
+h1:not(#hero .wp-block-heading) {
+  font-family: var(--font-heading);
+  color: var(--color-secondary);
+} */
+
+.home h2:not(#hero .wp-block-heading, #hero-product .wp-block-heading),
+.home h3 {
+  @apply text-3xl;
+
+  font-family: var(--font-heading);
+
+}
+
+.home #hero-product h2 {
+  font-family: var(--font-sansitalic);
+  
+}
+
+section#feature-products {
+  h2 {
+  padding-top: 3rem;
+  }
+  
+  .wp-block-group.alignwide.is-layout-flow.wp-block-group-is-layout-flow {
+    padding-bottom: 3rem;
+  }
+}
+/* 
+a {
+  color: inherit
+} */
+
+body {
+  background-color: var(--color-fundo);
+
+}
+
+.home h1.wp-block-heading {
+  font-size: 5rem;
+  color: var(--color-fundo);
+}
+
+h2 {
+  color: var(--color-primary);
+}
+
+strong {
+  color: inherit;
+}
+
+p {
+  font-family: var(--font-p);
+  color: var(--color-p);
+}
+
+.home section:not(.widget_block) {
+  @apply bg-section py-16;
+}
+/* Home */
+.home header.banner {
+  position: absolute;
+}
+
+.wp-block-cover .wp-block-cover__inner-container,
+.wp-block-cover-image .wp-block-cover__inner-container {
+  top: 8rem;
+}
+
+/* Menu */
+ul#menu-menu-principal {
+  @apply flex flex-col lg:flex-row gap-x-8
+}
+
+/* Main CTA */
+  .hero-cta,
+  .woocommerce div.product form.cart .single_add_to_cart_button,
+  #place_order,
+  #submit-payment,
+  .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button,
+  .woocommerce a.checkout-button.button.alt,
+  #fkcart-modal .fkcart-zero-state .fkcart-shop-button,
+  .product-button,
+  .wp-block-button__link,
+  .wp-element-button,
+  #fkcart-modal .fkcart-checkout-wrap #fkcart-checkout-button {
+    @apply px-2 py-2 rounded-lg text-sm font-bold transition text-white hover:text-white bg-secondary hover:bg-secondary hover:brightness-[80%] hover:scale-105 hover:shadow-lg active:scale-95 border-transparent;
+  }
+
+
+#shop_products, .wp-block-gallery.has-nested-images.is-cropped {
+  a.block {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+
+    img {      
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+img,
+.wc-block-components-product-image img {
+    @apply rounded;
+}
+
+.group {
+  background-color: #FAFAF7;
+}
+
+/* Produtos */
+
+/* .woocommerce-Price-amount.amount {
+  color: var(--color-primary);
+} */
+/* .woocommerce-product-gallery__wrapper {
+  a.block {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+} */
+
+.woocommerce div.product div.images {
+  img {
+    width: auto;
+  }
+}
+
+#hero {
+  height: 100dvh;
+}
+
+/* 1. Ensure the parent container clips the zooming image */
+.wp-block-cover.is-ken-burns {
+    overflow: hidden;
+    height: 100dvh;
+}
+
+/* 2. Target the background image */
+.wp-block-cover.is-ken-burns .wp-block-cover__image-background {
+    animation: kenburns-effect 20s ease-out infinite alternate;
+    transform-origin: center center;
+    /* Ensure the image stays sharp */
+    backface-visibility: hidden;
+}
+
+/* 3. Define the movement */
+@keyframes kenburns-effect {
+    0% {
+        transform: scale(1) translate(0, 0);
+    }
+    100% {
+        /* Subtle zoom to 115% and a slight pan */
+        transform: scale(1.15) translate(-2%, -1%);
+    }
+}
+
+/* 1. Target the Link specifically */
+.wp-block-button.is-liquid-fill .wp-block-button__link {
+  @apply px-4 py-6 text-lg font-bold; 
+
+    position: relative !important;
+    overflow: hidden !important; 
+    z-index: 1 !important;
+    background-color: transparent !important; 
+    color: var(--wp--preset--color--tertiary) !important;
+    border: 1px solid var(--wp--preset--color--tertiary) !important;
+    transition: color 0.5s ease !important;
+    display: block; /* Ensures the hover trigger area is fully filled */
+}
+
+/* 2. Create the 'Wine' Liquid */
+.wp-block-button.is-liquid-fill .wp-block-button__link::before {
+    content: "";
+    position: absolute;
+    top: 100%; /* Back to starting below the button */
+    left: -50%;
+    width: 200%;
+    height: 400%; 
+    background-color: var(--wp--preset--color--primary);
+    border-radius: 38%; 
+    z-index: -1; 
+    /* THE FIX: Removed the invalid syntax */
+    transition: top 0.7s ease-in-out, transform 1.2s linear;
+}
+
+/* 3. The Pour Animation */
+.wp-block-button.is-liquid-fill:hover .wp-block-button__link::before {
+    top: -150%; 
+    transform: rotate(360deg); 
+}
+
+/* 4. Text Color Flip (Optimized for your dark theme) */
+.wp-block-button.is-liquid-fill:hover .wp-block-button__link {
+    /* Uses your dark background color for high contrast against the gold fill */
+    color: var(--color-fundo) !important; 
+}
+
+footer {
+  @apply bg-preto text-center py-8 mt-16 text-white;
+}
+.wp-block-post-title :where(a) {
+  color: var(--color-primary);
+}

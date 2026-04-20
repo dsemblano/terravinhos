@@ -4,9 +4,9 @@
 wordpress_sites:
   bravaterravinhos.com.br:
     site_hosts:
-    - canonical: bravaterravinhos.com.br
-      redirects:
-      - www.bravaterravinhos.com.br
+    - canonical: staging.bravaterravinhos.com.br
+      # redirects:
+      # - www.bravaterravinhos.com.br
     local_path: ../site
     branch: master
     repo: git@github.com:dsemblano/terravinhos.git
@@ -14,7 +14,7 @@ wordpress_sites:
     multisite:
       enabled: false
     ssl:
-      enabled: false
+      enabled: true
       provider: letsencrypt
     cache:
       enabled: false
