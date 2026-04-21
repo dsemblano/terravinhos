@@ -20,7 +20,7 @@
       @include('sections.header')
 
       @if (! is_front_page() && ! is_home() )
-      <main id="main" class="main prose lg:prose-xl prose-p:text-xl mx-auto max-w-none container bg-yellow-500">
+      <main id="main" class="main prose lg:prose-xl prose-p:text-xl mx-auto max-w-none container">
       @else
       <main id="main" class="main prose lg:prose-xl prose-p:text-xl mx-auto max-w-none">
       @endif
