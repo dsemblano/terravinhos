@@ -36,7 +36,7 @@ the readme will list any important changes.
         do_action('get_footer', 'shop');
     @endphp
         </section>
-        <div class="flex flex-col lg:flex-row lg:justify-between bg-section">
+        <div class="container flex flex-col lg:flex-row lg:justify-between bg-section">
             {!! woocommerce_output_related_products() !!}
         </div>
 @endsection
