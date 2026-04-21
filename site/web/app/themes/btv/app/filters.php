@@ -131,21 +131,21 @@ add_filter( 'wp_default_scripts', function( $scripts ){
  * Defer Cart for WooCommerce CSS
  */
 
-add_filter('style_loader_tag', function ($html, $handle, $href, $media) {
+// add_filter('style_loader_tag', function ($html, $handle, $href, $media) {
 
-  if (strpos($href, 'cart-for-woocommerce/assets/css/style.min.css') === false) {
-    return $html;
-  }
+//   if (strpos($href, 'cart-for-woocommerce/assets/css/style.min.css') === false) {
+//     return $html;
+//   }
 
-  return <<<HTML
-<link rel="preload" href="{$href}" as="style"
-      onload="this.onload=null;this.rel='stylesheet'">
-<noscript>
-  <link rel="stylesheet" href="{$href}">
-</noscript>
-HTML;
+//   return <<<HTML
+// <link rel="preload" href="{$href}" as="style"
+//       onload="this.onload=null;this.rel='stylesheet'">
+// <noscript>
+//   <link rel="stylesheet" href="{$href}">
+// </noscript>
+// HTML;
 
-}, 10, 4);
+// }, 10, 4);
 
 add_filter('woocommerce_breadcrumb_defaults', function () {
     return [
