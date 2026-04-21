@@ -23,7 +23,7 @@ the readme will list any important changes.
     @endphp
 
     @while (have_posts())
-        <section id="shop_single_products" class="container bg-fundo">
+        <section id="shop_single_products" class="bg-fundo">
             @php
                 the_post();
                 wc_get_template_part('content', 'single-product');
@@ -36,7 +36,7 @@ the readme will list any important changes.
         do_action('get_footer', 'shop');
     @endphp
         </section>
-        <div class="container flex flex-col lg:flex-row lg:justify-between bg-section">
+        <div class="flex flex-col lg:flex-row lg:justify-between bg-section">
             {!! woocommerce_output_related_products() !!}
         </div>
 @endsection

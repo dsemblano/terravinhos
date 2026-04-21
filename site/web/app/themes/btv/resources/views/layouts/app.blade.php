@@ -19,7 +19,11 @@
 
       @include('sections.header')
 
+      @if (! is_front_page() && ! is_home() )
+      <main id="main" class="main prose lg:prose-xl prose-p:text-xl mx-auto max-w-none container bg-yellow-500">
+      @else
       <main id="main" class="main prose lg:prose-xl prose-p:text-xl mx-auto max-w-none">
+      @endif
         @yield('content')
       </main>
 

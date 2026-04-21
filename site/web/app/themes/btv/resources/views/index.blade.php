@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-  @include('partials.page-header')
+  @if (! is_front_page() && ! is_home() )
+    @include('partials.page-header')
+  @endif
 
   @if (! have_posts())
     <x-alert type="warning">

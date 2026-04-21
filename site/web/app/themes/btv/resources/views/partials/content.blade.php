@@ -1,4 +1,4 @@
-<div class="container prose prose-xl mx-auto max-w-full">
+<div class="mx-auto max-w-full">
     <article @php(post_class())>
         <header>
             <h2 class="entry-title">

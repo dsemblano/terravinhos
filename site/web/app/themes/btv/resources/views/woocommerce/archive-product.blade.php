@@ -31,7 +31,7 @@
 
 
         @if (woocommerce_product_loop())
-            <div id="shop_products" class="container">
+            <div id="shop_products" class="">
                 @php
                     $products = wc_get_products([
                         'status' => 'publish',

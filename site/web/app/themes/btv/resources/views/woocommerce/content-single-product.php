@@ -60,7 +60,7 @@ if ( post_password_required() ) {
 		do_action( 'woocommerce_single_product_summary' );
 		echo apply_filters('the_content', get_the_content());
 		// do_action('mytheme_product_cta');
-		 woocommerce_template_single_add_to_cart();
+		//  woocommerce_template_single_add_to_cart();
 		?>
 		    <!-- <div>
 				<h2 class="text-base lg:text-lg font-bold text-melescuro">Você pode calcular o frete aqui:</h2>
