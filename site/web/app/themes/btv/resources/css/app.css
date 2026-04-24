@@ -28,9 +28,9 @@
   --color-footer: #ECE0DD;
   --color-p: #504442;
   --color-preto: #0A1215;
-  --font-heading: "Work_Sans", sans-serif;
-  --font-sansitalic: "Noto_Serif_Italic", serif;
-  --font-p: "Noto_Serif", serif;
+  --font-heading: "Bebas_Neue", sans-serif;
+  --font-sansitalic: "Bebas_Neue", sans-serif;
+  --font-p: "Inter", sans-  serif;
   /* --font-p: ui-sans-serif, system-ui, sans-serif; */
   --arrow-link: #D68778;
   --arrow-small: 480px;
@@ -77,6 +77,14 @@
   @apply bg-blue-500;
 } */
 
+#hero {
+    height: 100dvh;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    flex-direction: column;
+}
+
 
 @layer utility {
   .container {
@@ -108,8 +116,10 @@ h1:not(#hero .wp-block-heading) {
   color: var(--color-secondary);
 } */
 
-.home h2:not(#hero .wp-block-heading, #hero-product .wp-block-heading),
-.home h3 {
+.home h2,
+.home h3,
+h4,
+h5 {
   @apply text-3xl;
 
   font-family: var(--font-heading);
