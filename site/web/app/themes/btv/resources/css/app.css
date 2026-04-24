@@ -152,8 +152,9 @@ body {
 }
 
 .home h1.wp-block-heading {
-  font-size: 5rem;
-  color: var(--color-fundo);
+  @apply text-4xl lg:text-6xl;
+
+  /* color: var(--color-fundo); */
 }
 
 h2 {
