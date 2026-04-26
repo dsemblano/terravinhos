@@ -31,10 +31,10 @@
         x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150"
         x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
         class="fixed inset-0 z-40 bg-offwhite lg:hidden pt-16" style="display: none">
-        <div class="container p-4">
+        <div class="container p-4 bg-white text-black">
             @foreach ($primary_navigation as $item)
                 <a href="{{ $item->url }}" @click="mobileOpen = false"
-                    class="block py-3 text-xl border-b border-gray-100 {{ $item->active ? 'text-secondary' : 'text-white' }}"
+                    class="block py-3 text-xl border-b border-gray-100 {{ $item->active ? 'text-black' : 'text-black' }}"
                     @if ($item->active || $item->activeAncestor) aria-current="{{ $item->active ? 'page' : 'true' }}" @endif>
                     {{ $item->label }}
                 </a>
