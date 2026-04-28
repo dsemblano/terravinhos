@@ -146,14 +146,3 @@ add_filter( 'wp_default_scripts', function( $scripts ){
 // HTML;
 
 // }, 10, 4);
-
-add_filter('woocommerce_breadcrumb_defaults', function () {
-    return [
-        'delimiter'   => '<span class="mx-2 text-gray-400">/</span>',
-        'wrap_before' => '<nav class="flex text-sm font-medium mb-6" aria-label="Breadcrumb">',
-        'wrap_after'  => '</nav>',
-        'before'      => '<span class="hover:text-secondary">',
-        'after'       => '</span>',
-        'home'        => _x('Início', 'breadcrumb', 'woocommerce'),
-    ];
-});
