@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f847a1b38d75e0274d703c145eba02a2",
+    "content-hash": "eb7800028dc6a953fdcdaf211b5589d5",
     "packages": [
         {
             "name": "brick/math",
@@ -7661,6 +7661,37 @@
                 "source": "https://plugins.svn.wordpress.org/wp-mail-smtp"
             },
             "time": "2026-04-16T15:16:32+00:00"
+        },
+        {
+            "name": "wp-plugin/zoloblocks",
+            "version": "2.7.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/zoloblocks/",
+                "reference": "tags/2.7.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/zoloblocks.2.7.1.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0|~2.0"
+            },
+            "type": "wordpress-plugin",
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "bdthemes"
+                }
+            ],
+            "description": "Empowering Gutenberg block editor to help you create WordPress websites with 55+ free Advanced blocks, 300+ patterns, 100+ ready pages and more.",
+            "homepage": "https://zoloblocks.com/",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/zoloblocks/#developers",
+                "issues": "https://wordpress.org/support/plugin/zoloblocks",
+                "source": "https://plugins.svn.wordpress.org/zoloblocks"
+            },
+            "time": "2026-03-23T19:23:21+00:00"
         },
         {
             "name": "wp-theme/twentytwentyfive",
