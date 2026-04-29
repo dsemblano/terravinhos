@@ -77,19 +77,20 @@
   @apply bg-blue-500;
 } */
 
-#hero {
+/* #hero {
     height: 100dvh;
     display: flex;
     margin: 0 auto;
     justify-content: center;
     flex-direction: column;
-}
+} */
 
 
 @layer utility {
   .container {
     padding: var(--container-padding, 1rem);
     margin-inline: auto;
+    /* background-color: aqua; */
 
     @variant lg {
       padding-inline: 8rem;
@@ -255,10 +256,10 @@ img,
 }
 
 /* 1. Ensure the parent container clips the zooming image */
-.wp-block-cover.is-ken-burns {
+/* .wp-block-cover.is-ken-burns {
     overflow: hidden;
     height: 100dvh;
-}
+} */
 
 /* 2. Target the background image */
 .wp-block-cover.is-ken-burns .wp-block-cover__image-background {
@@ -325,4 +326,9 @@ footer {
 }
 .wp-block-post-title :where(a) {
   color: var(--color-primary);
+}
+
+/* Correções blocos para ficar ok com class container */
+.wp-block-cover.has-custom-content-position.has-custom-content-position.is-position-center-right .wp-block-cover__inner-container {
+  width: 100%;
 }
