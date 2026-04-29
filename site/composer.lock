@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eb7800028dc6a953fdcdaf211b5589d5",
+    "content-hash": "ce647f7746149c0efa76ec930123d787",
     "packages": [
         {
             "name": "brick/math",
@@ -7413,6 +7413,37 @@
                 "source": "https://plugins.svn.wordpress.org/regenerate-thumbnails"
             },
             "time": "2026-03-23T19:23:21+00:00"
+        },
+        {
+            "name": "wp-plugin/simply-gallery-block",
+            "version": "3.3.3",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/simply-gallery-block/",
+                "reference": "tags/3.3.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/simply-gallery-block.3.3.3.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0|~2.0"
+            },
+            "type": "wordpress-plugin",
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "GalleryCreator"
+                }
+            ],
+            "description": "Create mixed media galleries with images, HTML5 video, YouTube, Vimeo, and VideoPress — all in one gallery by Simply Gallery.",
+            "homepage": "https://simplygallery.co/",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/simply-gallery-block/#developers",
+                "issues": "https://wordpress.org/support/plugin/simply-gallery-block",
+                "source": "https://plugins.svn.wordpress.org/simply-gallery-block"
+            },
+            "time": "2026-04-27T07:26:01+00:00"
         },
         {
             "name": "wp-plugin/woo-checkout-field-editor-pro",
