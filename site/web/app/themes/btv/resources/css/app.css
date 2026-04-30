@@ -147,7 +147,7 @@ h1:not(#hero .wp-block-heading) {
 
 .home h2,
 .home h3,
-.text-primary,
+.home .text-primary,
 h4,
 h5 {
   @apply text-3xl;
