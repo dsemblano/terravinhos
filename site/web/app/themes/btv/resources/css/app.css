@@ -65,32 +65,60 @@
   }
 }
 
-/* 
+
 @layer components {
   #hero-wrapper {
     @apply prose lg:prose-lg prose-h1:mt-4 prose-h1:mb-1;
   }
-} */
+
+  /* Classe base para todos os atributos com ícone */
+  [class^="li-"]::before {
+    content: "";
+    display: inline-block;
+    @apply w-6 h-6 mr-2 align-middle;
+    background-color: theme('colors.primary'); /* Cor vinho da sua paleta */
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+  }
+
+  /* Ícones específicos baseados no slug do atributo */
+  .li-regiao::before {
+    mask-image: url('../images/icons/teor-alcolico.svg');
+    -webkit-mask-image: url('../images/icons/teor-alcolico.svg');
+  }
+
+  .li-uva::before {
+    mask-image: url('../images/icons/grape-svgrepo-com.svg');
+    -webkit-mask-image: url('../images/icons/grape-svgrepo-com.svg');
+  }
+
+  .li-tipo::before {
+    mask-image: url('../images/icons/wine-svgrepo-com.svg');
+    -webkit-mask-image: url('../images/icons/wine-svgrepo-com.svg');
+  }
+
+}
 
 
 /* .container {
-  @apply bg-blue-500;
+  @apply bg-red-500;
 } */
 
-/* #hero {
+#hero {
     height: 100dvh;
     display: flex;
     margin: 0 auto;
     justify-content: center;
     flex-direction: column;
-} */
+}
 
 
 @layer utility {
   .container {
     padding: var(--container-padding, 1rem);
     margin-inline: auto;
-    /* background-color: aqua; */
 
     @variant lg {
       padding-inline: 8rem;
@@ -111,11 +139,11 @@
 html {
   scroll-behavior: smooth;
 }
-/* 
+
 h1:not(#hero .wp-block-heading) {
   font-family: var(--font-heading);
   color: var(--color-secondary);
-} */
+}
 
 .home h2,
 .home h3,
@@ -130,19 +158,19 @@ h5 {
 
 .home #hero-product h2 {
   font-family: var(--font-sansitalic);
-  
+
 }
 
 section#feature-products {
   h2 {
   padding-top: 3rem;
   }
-  
+
   .wp-block-group.alignwide.is-layout-flow.wp-block-group-is-layout-flow {
     padding-bottom: 3rem;
   }
 }
-/* 
+/*
 a {
   color: inherit
 } */
@@ -210,7 +238,7 @@ ul#menu-menu-principal {
     aspect-ratio: 1 / 1;
     overflow: hidden;
 
-    img {      
+    img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -282,12 +310,12 @@ img,
 
 /* 1. Target the Link specifically */
 .wp-block-button.is-liquid-fill .wp-block-button__link {
-  @apply px-4 py-6 text-lg font-bold; 
+  @apply px-4 py-6 text-lg font-bold;
 
     position: relative !important;
-    overflow: hidden !important; 
+    overflow: hidden !important;
     z-index: 1 !important;
-    background-color: transparent !important; 
+    background-color: transparent !important;
     color: var(--wp--preset--color--tertiary) !important;
     border: 1px solid var(--wp--preset--color--tertiary) !important;
     transition: color 0.5s ease !important;
@@ -301,24 +329,24 @@ img,
     top: 100%; /* Back to starting below the button */
     left: -50%;
     width: 200%;
-    height: 400%; 
+    height: 400%;
     background-color: var(--wp--preset--color--primary);
-    border-radius: 38%; 
-    z-index: -1; 
+    border-radius: 38%;
+    z-index: -1;
     /* THE FIX: Removed the invalid syntax */
     transition: top 0.7s ease-in-out, transform 1.2s linear;
 }
 
 /* 3. The Pour Animation */
 .wp-block-button.is-liquid-fill:hover .wp-block-button__link::before {
-    top: -150%; 
-    transform: rotate(360deg); 
+    top: -150%;
+    transform: rotate(360deg);
 }
 
 /* 4. Text Color Flip (Optimized for your dark theme) */
 .wp-block-button.is-liquid-fill:hover .wp-block-button__link {
     /* Uses your dark background color for high contrast against the gold fill */
-    color: var(--color-fundo) !important; 
+    color: var(--color-fundo) !important;
 }
 
 footer {
@@ -332,3 +360,16 @@ footer {
 .wp-block-cover.has-custom-content-position.has-custom-content-position.is-position-center-right .wp-block-cover__inner-container {
   width: 100%;
 }
+
+/* WooCommerce icones */
+/* .li-teor-alcolico::before {
+  content: "";
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23722f37' d='M...'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+} */
