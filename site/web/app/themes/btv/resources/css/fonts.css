@@ -21,3 +21,19 @@
     font-weight: 400;
     src: url('@fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype');
   }
+
+  @font-face {
+    font-display: swap;
+    font-family: 'Spacegrotesk';
+    font-style: normal;
+    font-weight: 400;
+    src: url('@fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: 'Hanken_Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    src: url('@fonts/Hanken_Grotesk/HankenGrotesk-VariableFont_wght.ttf') format('truetype');
+  }

@@ -29,6 +29,7 @@
   --color-p: #504442;
   --color-preto: #0A1215;
   --font-heading: "Bebas_Neue", sans-serif;
+  --font-subheading: "Spacegrotesk", serif;
   --font-sansitalic: "Bebas_Neue", sans-serif;
   --font-p: "Inter", sans-  serif;
   /* --font-p: ui-sans-serif, system-ui, sans-serif; */
@@ -155,6 +156,11 @@ html {
   scroll-behavior: smooth;
 }
 
+.home h1 {
+  font-family: var(--font-heading);
+}
+
+/* H1 para outras páginas */
 h1:not(#hero .wp-block-heading) {
   font-family: var(--font-heading);
   color: var(--color-secondary);
@@ -165,9 +171,9 @@ h1:not(#hero .wp-block-heading) {
 .home .text-primary,
 h4,
 h5 {
-  @apply text-3xl;
+  @apply text-3xl tracking-tight;
 
-  font-family: var(--font-heading);
+  font-family: var(--font-subheading);
 
 }
 

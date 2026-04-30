@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WooCommerce - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-04-18 20:06:07+0000\n"
+"PO-Revision-Date: 2026-04-24 21:29:57+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -62,6 +62,66 @@ msgstr "Peso do produto formatado para exibição (ex: \"2,5 kg\")."
 #: src/StoreApi/Schemas/V1/ImageAttachmentSchema.php:52
 msgid "Full size image sizes for responsive images."
 msgstr "Tamanhos de imagem em tamanho completo para imagens responsivas."
+
+#: src/StoreApi/Schemas/V1/ImageAttachmentSchema.php:47
+msgid "Full size image srcset for responsive images."
+msgstr "Srcset de imagens em tamanho completo para imagens responsivas."
+
+#: src/StoreApi/Routes/V1/Products.php:442
+msgid "Limit result set to products related to a specific product ID."
+msgstr "Limitar o conjunto de resultados a produtos relacionados a um ID de produto específico."
+
+#: src/Internal/RestApi/Routes/V4/ShippingZones/ShippingZoneSchema.php:56
+msgid "Array of locations for this zone. Omit or pass an empty array for an \"Everywhere\" zone."
+msgstr "Array de locais para esta zona. Omita ou envie um array vazio para uma zona \"Em todos os lugares\"."
+
+#: src/Internal/RestApi/Routes/V4/Settings/PaymentGateways/Schema/CodGatewaySettingsSchema.php:88
+msgid "Manage how Cash on delivery appears at checkout and in order emails."
+msgstr "Gerenciar como o pagamento na entrega aparece no checkout e nos e-mails de pedido."
+
+#: src/Internal/RestApi/Routes/V4/Settings/PaymentGateways/Schema/CodGatewaySettingsSchema.php:87
+msgid "Cash on delivery settings"
+msgstr "Configurações de pagamento na entrega"
+
+#: src/Internal/RestApi/Routes/V4/Settings/PaymentGateways/Schema/CodGatewaySettingsSchema.php:74
+msgid "Choose which shipping methods support Cash on delivery."
+msgstr "Escolha quais métodos de envio suportam pagamento na entrega."
+
+#: src/Internal/RestApi/Routes/V4/Settings/PaymentGateways/Schema/CodGatewaySettingsSchema.php:72
+msgid "Available for shipping methods"
+msgstr "Disponível para métodos de envio"
+
+#: src/Internal/RestApi/Routes/V4/Settings/PaymentGateways/Schema/CodGatewaySettingsSchema.php:49
+msgid "Enable Cash on delivery at checkout"
+msgstr "Ativar pagamento na entrega no checkout"
+
+#: src/Internal/RestApi/Routes/V4/Settings/PaymentGateways/Schema/ChequeGatewaySettingsSchema.php:68
+msgid "Check payment settings"
+msgstr "Configurações de pagamento por cheque"
+
+#: src/Internal/RestApi/Routes/V4/Settings/PaymentGateways/Schema/ChequeGatewaySettingsSchema.php:59
+msgid "Instructions shown after checkout"
+msgstr "Instruções exibidas após a finalização de compra"
+
+#: src/Internal/RestApi/Routes/V4/Settings/PaymentGateways/Schema/ChequeGatewaySettingsSchema.php:69
+msgid "Manage how check payments appear at checkout and in order emails."
+msgstr "Gerenciar como pagamentos por cheque aparecem na finalização de compra e nos e-mails de pedido."
+
+#: src/Internal/RestApi/Routes/V4/Settings/PaymentGateways/Schema/ChequeGatewaySettingsSchema.php:40
+msgid "Enable check payments at checkout"
+msgstr "Ativar pagamentos por cheque na finalização de compra"
+
+#: src/Internal/RestApi/Routes/V4/Settings/PaymentGateways/Schema/BacsGatewaySettingsSchema.php:79
+msgid "Manage the bank accounts customers can use to pay by bank transfer."
+msgstr "Gerenciar as contas bancárias que os clientes podem usar para pagar por transferência bancária."
+
+#: src/Internal/RestApi/Routes/V4/Settings/PaymentGateways/Schema/BacsGatewaySettingsSchema.php:78
+msgid "Bank account details"
+msgstr "Detalhes da conta bancária"
+
+#: src/Internal/RestApi/Routes/V4/Settings/PaymentGateways/Schema/BacsGatewaySettingsSchema.php:70
+msgid "Manage how Direct bank transfer appears at checkout and in order emails."
+msgstr "Gerenciar como a transferência bancária direta aparece na finalização de compra e nos e-mails de pedido."
 
 #: assets/client/blocks/coupon-code/block.json
 msgctxt "block description"
