@@ -83,20 +83,35 @@
     mask-position: center;
   }
 
-  /* Ícones específicos baseados no slug do atributo */
+  /* AVG Ícones baseados no slug do atributo */
   .li-regiao::before {
     mask-image: url('../images/icons/teor-alcolico.svg');
     -webkit-mask-image: url('../images/icons/teor-alcolico.svg');
   }
 
   .li-uva::before {
-    mask-image: url('../images/icons/grape-svgrepo-com.svg');
-    -webkit-mask-image: url('../images/icons/grape-svgrepo-com.svg');
+    mask-image: url('../images/icons/bunch-of-grapes-svgrepo-com.svg');
+    -webkit-mask-image: url('../images/icons/bunch-of-grapes-svgrepo-com.svg');
   }
 
   .li-tipo::before {
-    mask-image: url('../images/icons/wine-svgrepo-com.svg');
-    -webkit-mask-image: url('../images/icons/wine-svgrepo-com.svg');
+    mask-image: url('../images/icons/wine-glass-svgrepo-com.svg');
+    -webkit-mask-image: url('../images/icons/wine-glass-svgrepo-com.svg');
+  }
+
+  .li-safra::before {
+    mask-image: url('../images/icons/calendar-alt-svgrepo-com.svg');
+    -webkit-mask-image: url('../images/icons/calendar-alt-svgrepo-com.svg');
+  }
+
+  .li-teor-alcoolico::before {
+    mask-image: url('../images/icons/glass-and-bottle-of-wine-svgrepo-com.svg');
+    -webkit-mask-image: url('../images/icons/glass-and-bottle-of-wine-svgrepo-com.svg');
+  }
+
+  .li-harmonizacao::before {
+    mask-image: url('../images/icons/food-dish-svgrepo-com.svg');
+    -webkit-mask-image: url('../images/icons/food-dish-svgrepo-com.svg');
   }
 
 }

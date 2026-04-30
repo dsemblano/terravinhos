@@ -4,7 +4,7 @@
     <div class="pt-4">
         <h3 class="font-semibold text-primary mb-2">Características</h3>
 
-        <ul class="text-gray-700 list-none grid grid-cols-2 text-xl">
+        <ul class="text-gray-700 list-none grid grid-cols-2 text-lg">
             @foreach ($product->get_attributes() as $attribute)
                 @php
                     // Obtém o slug (ex: pa_corpo)
@@ -16,8 +16,10 @@
                     $value = implode(', ', wc_get_product_terms($product->get_id(), $attr_slug, ['fields' => 'names']));
                 @endphp
 
-                <li class="li-{{ $class_name }}">
-                    <strong>{{ $name }}:</strong> {{ $value }}
+                <li class="li-{{ $class_name }} inline-flex">
+                    <span class="flex flex-col">
+                        <strong>{{ $name }}</strong> {{ $value }}
+                    </span>
                 </li>
             @endforeach
         </ul>
