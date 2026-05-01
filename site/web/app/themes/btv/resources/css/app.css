@@ -116,6 +116,11 @@
     -webkit-mask-image: url('../images/icons/food-dish-svgrepo-com.svg');
   }
 
+  .li-estado::before {
+    mask-image: url('../images/icons/brazil-map-svgrepo-com.svg');
+    -webkit-mask-image: url('../images/icons/brazil-map-svgrepo-com.svg');
+  }
+
 }
 
 
