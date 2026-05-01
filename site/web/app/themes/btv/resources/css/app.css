@@ -21,7 +21,8 @@
   /* berry mode */
   --color-primary: #4A0E2E;
   --color-secondary: #C2185B;
-  --color-tertiary: #6592A3;
+  --color-tertiary: #7C5A30;
+  --color-tertiary-light: #6592A3;
   --color-fundo: #F4F3F4;
 
   --color-section: #F4F4EF;
@@ -163,7 +164,7 @@ html {
 /* H1 para outras páginas */
 h1:not(#hero .wp-block-heading) {
   font-family: var(--font-heading);
-  color: var(--color-secondary);
+  color: var(--color-tertiary);
 }
 
 .home h2,
@@ -202,7 +203,7 @@ body {
 }
 
 .home h1.wp-block-heading {
-  @apply text-4xl lg:text-6xl;
+  @apply text-4xl lg:text-8xl;
 
   /* color: var(--color-fundo); */
 }
@@ -336,9 +337,9 @@ img,
     position: relative !important;
     overflow: hidden !important;
     z-index: 1 !important;
-    background-color: transparent !important;
-    color: var(--wp--preset--color--tertiary) !important;
-    border: 1px solid var(--wp--preset--color--tertiary) !important;
+    background-color: var(--color-tertiary) !important;
+    color: white !important;
+    border: 1px solid var(--color-tertiary) !important;
     transition: color 0.5s ease !important;
     display: block; /* Ensures the hover trigger area is fully filled */
 }
