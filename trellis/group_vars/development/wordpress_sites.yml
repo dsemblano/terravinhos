@@ -1,0 +1,18 @@
+# Created by trellis-cli v1.14.1
+# Documentation: https://roots.io/trellis/docs/wordpress-sites/
+
+wordpress_sites:
+  bravaterravinhos.com.br:
+    site_hosts:
+    - canonical: bravaterravinhos.test
+      redirects:
+      - www.bravaterravinhos.test
+    local_path: ../site
+    admin_email: admin@bravaterravinhos.test
+    multisite:
+      enabled: false
+    ssl:
+      enabled: false
+      provider: self-signed
+    cache:
+      enabled: false

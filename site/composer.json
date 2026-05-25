@@ -1,0 +1,123 @@
+{
+  "name": "roots/bedrock",
+  "type": "project",
+  "license": "MIT",
+  "description": "WordPress boilerplate with Composer, easier configuration, and an improved folder structure",
+  "homepage": "https://roots.io/bedrock/",
+  "authors": [
+    {
+      "name": "Scott Walkinshaw",
+      "email": "scott.walkinshaw@gmail.com",
+      "homepage": "https://github.com/swalkinshaw"
+    },
+    {
+      "name": "Ben Word",
+      "email": "ben@benword.com",
+      "homepage": "https://github.com/retlehs"
+    }
+  ],
+  "keywords": [
+    "bedrock",
+    "composer",
+    "roots",
+    "wordpress-composer",
+    "wordpress",
+    "wp-composer",
+    "wp-config",
+    "wp"
+  ],
+  "support": {
+    "issues": "https://github.com/roots/bedrock/issues",
+    "forum": "https://discourse.roots.io/category/bedrock"
+  },
+  "repositories": [
+    {
+      "name": "wp-packages",
+      "type": "composer",
+      "url": "https://repo.wp-packages.org",
+      "only": [
+        "wp-plugin/*",
+        "wp-theme/*"
+      ]
+    },
+    {
+      "name": "wp-packages",
+      "type": "composer",
+      "url": "https://repo.wp-packages.org"
+    }
+  ],
+  "require": {
+    "php": ">=8.3",
+    "composer/installers": "^2.2",
+    "generoi/sage-woocommerce": "^1.1",
+    "log1x/navi": "^3.1",
+    "oscarotero/env": "^2.1",
+    "roots/bedrock-autoloader": "^1.0",
+    "roots/bedrock-disallow-indexing": "^2.0",
+    "roots/wordpress": "6.9.4",
+    "roots/wp-config": "1.0.0",
+    "vlucas/phpdotenv": "^5.5",
+    "wp-plugin/annasta-woocommerce-product-filters": "*",
+    "wp-plugin/autodescription": "^5.1.2",
+    "wp-plugin/basic-user-avatars": "^1.0.9",
+    "wp-plugin/better-block-editor": "^1.4",
+    "wp-plugin/cf7-cep-autofill": "*",
+    "wp-plugin/contact-form-7": "^6.0.6",
+    "wp-plugin/dynamic-ajax-product-filters-for-woocommerce": "^1.6",
+    "wp-plugin/ewww-image-optimizer": "^8.1.4",
+    "wp-plugin/fast-cart": "^1.2.1",
+    "wp-plugin/flamingo": "^2.6",
+    "wp-plugin/foogallery": "^3.1.6",
+    "wp-plugin/gtm-kit": "^2.7.0",
+    "wp-plugin/infixs-correios-automatico": "^1.7",
+    "wp-plugin/redirection": "^5.5.2",
+    "wp-plugin/regenerate-thumbnails": "^3.1.5",
+    "wp-plugin/simply-gallery-block": "^3.3",
+    "wp-plugin/virtuaria-correios": "^1.13",
+    "wp-plugin/woo-checkout-field-editor-pro": "^2.1",
+    "wp-plugin/woocommerce": "^10.6",
+    "wp-plugin/woocommerce-correios": "^4.2.5",
+    "wp-plugin/woocommerce-extra-checkout-fields-for-brazil": "^4.0",
+    "wp-plugin/woocommerce-pdf-invoices-packing-slips": "^5.9",
+    "wp-plugin/woocommerce-product-generator": "^3.2",
+    "wp-plugin/wp-mail-smtp": "^4.4.0",
+    "wp-plugin/ymc-smart-filter": "^3.8",
+    "wp-plugin/zoloblocks": "^2.7",
+    "wp-theme/twentytwentyfive": "^1.0"
+  },
+  "require-dev": {
+    "laravel/pint": "^1.27",
+    "pestphp/pest": "^4.0"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "allow-plugins": {
+      "composer/installers": true,
+      "roots/wordpress-core-installer": true,
+      "pestphp/pest-plugin": true
+    },
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "extra": {
+    "installer-paths": {
+      "web/app/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin"
+      ],
+      "web/app/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "web/app/themes/{$name}/": [
+        "type:wordpress-theme"
+      ]
+    },
+    "wordpress-install-dir": "web/wp"
+  },
+  "scripts": {
+    "lint": "pint --test",
+    "lint:fix": "pint",
+    "test": "pest"
+  }
+}

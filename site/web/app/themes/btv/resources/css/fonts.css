@@ -1,0 +1,31 @@
+  /* @font-face {
+    font-display: swap;
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 400;
+    src: url('@fonts/Merriweather/Merriweather-VariableFont_opsz,wdth,wght.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    src: url('@fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+  } */
+
+  @font-face {
+    font-display: swap;
+    font-family: 'Hanken_Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    src: url('@fonts/Hanken_Grotesk/HankenGrotesk-VariableFont_wght.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: 'Crimson_Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: url('@fonts/Crimson_Pro/CrimsonPro-VariableFont_wght.ttf') format('truetype');
+  }
