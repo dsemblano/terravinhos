@@ -133,6 +133,49 @@ document.addEventListener("DOMContentLoaded", function() {
     }, { passive: true }); // passive increases performance on heavy product scroll loops
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Procura todos os seletores de quantidade do WooCommerce
+    document.querySelectorAll('.quantity').forEach(qty => {
+        const input = qty.querySelector('input[type="number"]');
+        if (!input) return;
+
+        // Cria o botão de Menos
+        const minusBtn = document.createElement('button');
+        minusBtn.type = 'button';
+        minusBtn.innerText = '−';
+        minusBtn.className = 'px-3 h-full text-neutral-500 hover:text-neutral-800 transition-colors font-medium text-lg focus:outline-none';
+        
+        // Cria o botão de Mais
+        const plusBtn = document.createElement('button');
+        plusBtn.type = 'button';
+        plusBtn.innerText = '+';
+        plusBtn.className = 'px-3 h-full text-neutral-500 hover:text-neutral-800 transition-colors font-medium text-lg focus:outline-none';
+
+        // Insere os botões envolvendo o input
+        qty.insertBefore(minusBtn, input);
+        qty.appendChild(plusBtn);
+
+        // Listeners de clique
+        minusBtn.addEventListener('click', () => {
+            const val = parseInt(input.value) || 1;
+            const min = parseInt(input.getAttribute('min')) || 1;
+            if (val > min) {
+                input.value = val - 1;
+                input.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        });
+
+        plusBtn.addEventListener('click', () => {
+            const val = parseInt(input.value) || 1;
+            const max = parseInt(input.getAttribute('max'));
+            if (!max || val < max) {
+                input.value = val + 1;
+                input.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        });
+    });
+});
+
 
 import.meta.glob([
   '../images/**',

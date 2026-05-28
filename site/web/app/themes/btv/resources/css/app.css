@@ -678,3 +678,110 @@ img,
     margin: 0 auto;
     object-fit: contain;
 }
+
+/* Container do formulário de compra do WooCommerce */
+.single-product form.cart {
+    @apply flex items-center gap-3 mt-6;
+}
+
+/* 1. O INPUT DE QUANTIDADE */
+.single-product form.cart .quantity {
+    @apply relative flex items-center bg-neutral-100 rounded-lg border border-neutral-200/60 overflow-hidden h-11;
+}
+
+/* Estilizando o campo numérico em si */
+.single-product form.cart .quantity input[type="number"] {
+    @apply w-14 bg-transparent text-center text-sm font-semibold text-neutral-800 border-none focus:ring-0 focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none;
+}
+
+/* 2. O BOTÃO "COMPRAR" (Single Add To Cart Button) */
+.single-product form.cart .single_add_to_cart_button {
+    /* Troquei o azul genérico por um tom terroso/sofisticado alinhado ao seu projeto */
+    @apply h-11 px-8 bg-[#8B5A2B] hover:bg-[#606C38] text-white font-semibold text-sm tracking-wide uppercase rounded-lg shadow-sm transition-all duration-200 ease-in-out cursor-pointer flex items-center justify-center;
+}
+
+/* Ajuste sutil para o mobile: ocupa tudo se a tela for muito pequena */
+@media (max-width: 640px) {
+    .single-product form.cart {
+        @apply w-full justify-between;
+    }
+    .single-product form.cart .single_add_to_cart_button {
+        @apply flex-1 ml-2;
+    }
+}
+
+
+/* 1. Estrutura Geral da Tabela */
+.woocommerce-cart-form table.cart {
+    @apply border-separate border-spacing-0 w-full rounded-xl border border-neutral-200/60 overflow-hidden shadow-sm bg-white!;
+}
+
+/* Cabeçalho da Tabela */
+.woocommerce-cart-form table.cart thead th {
+    @apply bg-neutral-50/70 text-neutral-800 font-bold text-xs uppercase tracking-wider py-4 px-6 border-b border-neutral-200/60 text-left;
+}
+
+/* Linhas e Células */
+.woocommerce-cart-form table.cart tbody td {
+    @apply py-5 px-6 border-b border-neutral-100 text-neutral-700 text-sm align-middle;
+}
+
+.woocommerce-cart-form table.cart tbody tr:last-child td {
+    @apply border-none;
+}
+
+/* 2. Botão de Remover Produto (O "X" vermelho) */
+.woocommerce-cart-form table.cart a.remove {
+    @apply text-neutral-400 hover:text-red-600 hover:bg-red-50 text-lg font-normal w-7 h-7 flex items-center justify-center rounded-full transition-all!;
+}
+
+/* 3. Miniatura do Produto */
+.woocommerce-cart-form table.cart td.product-thumbnail img {
+    @apply w-12 h-auto max-h-16 object-contain rounded-md drop-shadow-sm bg-neutral-50 p-1 mix-blend-multiply;
+}
+
+/* 4. Link do Nome do Produto */
+.woocommerce-cart-form table.cart td.product-name a {
+    @apply font-medium text-neutral-900 hover:text-[#8B5A2B] transition-colors;
+}
+
+/* 5. Input de Quantidade na Tabela (Herda o mesmo padrão que fizemos no Single Product) */
+.woocommerce-cart-form table.cart .quantity {
+    @apply relative inline-flex items-center bg-neutral-100 rounded-lg border border-neutral-200/60 overflow-hidden h-9;
+}
+
+.woocommerce-cart-form table.cart .quantity input[type="number"] {
+    @apply w-12 bg-transparent text-center text-xs font-semibold text-neutral-800 border-none focus:ring-0 focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none;
+}
+
+/* 6. Botão "Atualizar Carrinho" e Cupons */
+.woocommerce-cart-form table.cart button[name="update_cart"] {
+    @apply h-10 px-6 bg-neutral-100 hover:bg-neutral-200 text-neutral-700 font-semibold text-xs tracking-wide uppercase rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed ml-auto block mt-4 border border-neutral-200/40;
+}
+
+/* Seção de Cupom se estiver na mesma linha */
+.woocommerce-cart-form .actions .coupon {
+    @apply flex items-center gap-2 mt-4;
+}
+
+.woocommerce-cart-form .actions .coupon input[type="text"] {
+    @apply h-10 px-4 bg-white border border-neutral-200 rounded-lg text-sm focus:border-[#8B5A2B] focus:ring-0 transition-all w-48;
+}
+
+.woocommerce-cart-form .actions .coupon button {
+    @apply h-10 px-5 bg-neutral-800 hover:bg-neutral-900 text-white font-semibold text-xs tracking-wide uppercase rounded-lg transition-all;
+}
+
+/* Ajuste fino na mensagem padrão do WooCommerce */
+.woocommerce-message, .woocommerce-info, .woocommerce-error {
+    @apply flex flex-row-reverse items-center justify-between bg-[#fcfbfa] border-none border-t-2 border-[#8B5A2B] rounded-lg p-4 px-6 shadow-sm text-sm text-neutral-800 mb-6 gap-4;
+}
+
+.woocommerce-message ::before, .woocommerce-info ::before {
+    @apply text-[#606C38] relative top-0 left-0 !mr-2;
+}
+
+/* Botão "Ver Carrinho" dentro da mensagem */
+.woocommerce-message .button.wc-forward {
+    @apply bg-transparent text-[#8B5A2B] font-bold text-xs uppercase tracking-wider underline underline-offset-4 hover:text-[#606C38] transition-colors p-0 border-none h-auto order-2!;
+}
