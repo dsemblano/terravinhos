@@ -2,7 +2,7 @@
 
 @if ($product->has_attributes())
     <div class="pt-4">
-        <h3 class="font-semibold text-primary mb-2">Características</h3>
+        <h3 class="font-semibold text-vinho mb-2">Características</h3>
 
         <dl class="text-gray-700 grid grid-cols-2 gap-6 text-lg font-heading">
             @foreach ($product->get_attributes() as $attribute)

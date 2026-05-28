@@ -14,22 +14,6 @@
   @version 3.4.0
   --}}
 
-{{--
-  The Template for displaying product archives, including the main shop page which is a post type archive
-
-  This template can be overridden by copying it to yourtheme/woocommerce/archive-product.php.
-
-  HOWEVER, on occasion WooCommerce will need to update template files and you
-  (the theme developer) will need to copy the new files to your theme to
-  maintain compatibility. We try to do this as little as possible, but it does
-  happen. When this occurs the version of the template file will be bumped and
-  the readme will list any important changes.
-
-  @see https://docs.woocommerce.com/document/template-structure/
-  @package WooCommerce/Templates
-  @version 3.4.0
-  --}}
-
 @extends('layouts.app')
 
 @section('content')
@@ -58,8 +42,6 @@
                     
                     {{-- @php do_action('woocommerce_before_shop_loop'); @endphp --}}
 
-                    {{-- 2. Added the 'products' class here. 
-                           I kept your Tailwind grid exactly as you had it. --}}
                     <div class="products grid grid-cols-2 md:grid-cols-3 gap-2 lg:gap-4 mb-6">
                         @while(have_posts()) 
                             @php 
