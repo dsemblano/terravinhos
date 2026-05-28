@@ -23,7 +23,7 @@ the readme will list any important changes.
     @endphp
 
     @while (have_posts())
-        <section id="shop_single_products" class="bg-white">
+        <section id="shop_single_products" class="bg-white pt-8">
             <div class="container">
                 @php
                     the_post();

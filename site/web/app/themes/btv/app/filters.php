@@ -179,3 +179,14 @@ add_action('wp', function () {
         remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
     }
 });
+
+add_filter( 'woocommerce_breadcrumb_defaults', function() {
+    return array(
+        'delimiter'   => '<span class="mx-2">/</span>',
+        'wrap_before' => '<nav class="container flex w-full py-4 text-xs lg:text-sm" aria-label="Breadcrumb"><ol class="inline-flex not-prose items-center">',
+        'wrap_after'  => '</ol></nav>',
+        'before'      => '<li class="inline-flex items-center hover:underline">',
+        'after'       => '</li>',
+        'home'        => _x( 'Início', 'breadcrumb', 'woocommerce' ),
+    );
+});
