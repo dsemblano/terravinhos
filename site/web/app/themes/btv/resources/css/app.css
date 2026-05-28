@@ -663,3 +663,18 @@ img,
 .awf-togglable-preset-btn {
   @apply bg-tertiary hover:bg-tertiary text-white px-4 py-2 rounded-lg transition duration-300 hover:brightness-150;
 }
+
+/* Limita o contêiner principal da galeria de fotos no single product */
+.single-product .woocommerce-product-gallery {
+    max-width: 420px; /* Largura ideal para renderizar uma garrafa sem ocupar a tela inteira */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Garante que a imagem se comporte bem dentro do slider nativo */
+.single-product .woocommerce-product-gallery__image img {
+    max-height: 550px; /* Impede que garrafas muito altas empurrem o layout */
+    width: auto !important; /* Mantém a proporção perfeita da garrafa */
+    margin: 0 auto;
+    object-fit: contain;
+}
