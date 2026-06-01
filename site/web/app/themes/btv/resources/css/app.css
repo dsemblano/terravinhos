@@ -330,17 +330,15 @@ ul#menu-menu-principal {
 .woocommerce div.product form.cart .single_add_to_cart_button,
 #place_order,
 #submit-payment,
-.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button,
-.woocommerce a.checkout-button.button.alt,
 #fkcart-modal .fkcart-zero-state .fkcart-shop-button,
 .wp-block-button__link,
 .wp-element-button,
 #fkcart-modal .fkcart-checkout-wrap #fkcart-checkout-button {
-  @apply px-2 py-2 rounded-lg text-sm font-bold transition text-white hover:text-white bg-primary hover:brightness-[80%] hover:scale-105 hover:shadow-lg active:scale-95 border-transparent;
+  @apply px-2 py-2 rounded-lg text-sm font-bold transition text-white hover:text-white bg-primary hover:scale-105 hover:shadow-lg active:scale-95 border-transparent;
 }
 
 .product-button {
-  @apply px-2 py-2 rounded-lg text-sm font-bold transition text-white hover:text-white bg-primary hover:brightness-[80%] hover:scale-105 hover:shadow-lg active:scale-95 border-transparent;
+  @apply px-2 py-2 rounded-lg text-sm font-bold transition text-white hover:text-white bg-primary hover:scale-105 hover:shadow-lg active:scale-95 border-transparent;
 }
 
 #shop_products,
@@ -637,6 +635,7 @@ img,
 }
 
 .infixs-correios-automatico-calculator input.infixs-correios-automatico-input {
+  font-size: smaller;
   border-radius: 3px;
   border-width: 1px;
   border-color: var(--color-correios);
@@ -644,13 +643,15 @@ img,
   letter-spacing: 1px;
   height: 38px;
   font-size: 16px;
-  padding: 0 10px 0 50px;
+  padding: 0 5px 0 25px;
   margin: 0;
 }
 
 .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button.alt,
 :where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce button.button {
-  @apply bg-correios hover:bg-correios hover:brightness-80 text-gray-200 hover:text-yellow-400 px-4 py-2 rounded transition font-light;
+  @apply bg-correios hover:bg-correios text-gray-200 hover:text-yellow-400! px-4 py-2 rounded transition font-light content-center;
+
+  font-size: smaller;
 }
 
 /* .main-woo {
