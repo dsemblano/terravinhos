@@ -54,7 +54,7 @@
     "oscarotero/env": "^2.1",
     "roots/bedrock-autoloader": "^1.0",
     "roots/bedrock-disallow-indexing": "^2.0",
-    "roots/wordpress": "6.9.4",
+    "roots/wordpress": "^7.0",
     "roots/wp-config": "1.0.0",
     "vlucas/phpdotenv": "^5.5",
     "wp-plugin/annasta-woocommerce-product-filters": "*",
@@ -81,7 +81,7 @@
     "wp-plugin/woocommerce-pdf-invoices-packing-slips": "^5.9",
     "wp-plugin/woocommerce-product-generator": "^3.2",
     "wp-plugin/wp-mail-smtp": "^4.4.0",
-    "wp-plugin/ymc-smart-filter": "^3.8",
+    "wp-plugin/ymc-smart-filter": "^3.11",
     "wp-plugin/zoloblocks": "^2.7",
     "wp-theme/twentytwentyfive": "^1.0"
   },

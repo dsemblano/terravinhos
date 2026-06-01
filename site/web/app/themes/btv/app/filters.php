@@ -190,36 +190,3 @@ add_filter( 'woocommerce_breadcrumb_defaults', function() {
         'home'        => _x( 'Início', 'breadcrumb', 'woocommerce' ),
     );
 });
-
-/**
- * Altera a estrutura padrão dos alertas do WooCommerce (Sucesso, Avisos e Erros)
- * para usar o design minimalista com bordas finas e cores sóbrias.
- */
-add_filter( 'woocommerce_output_allow_html', function( $allow ) {
-    return true; 
-});
-
-// Filtro anônimo para customizar o HTML do bloco de mensagens
-add_filter( 'woocommerce_add_message', function( $message ) {
-    return $message;
-});
-
-// Filtro para injetar o texto simpático quando o produto vai para o carrinho
-add_filter( 'wc_add_to_cart_message_html', function( $message, $products ) {
-    $product_titles = array();
-    foreach ( $products as $product_id => $quantity ) {
-        $product_titles[] = get_the_title( $product_id );
-    }
-    $titles = implode( ', ', $product_titles );
-    
-    // Copy mais refinado para a sua marca
-    $new_text = sprintf( 'Excelente escolha! "%s" foi adicionado ao seu carrinho.', $titles );
-    
-    $button_html = sprintf( 
-        '<a href="%s" class="button wc-forward">%s</a>', 
-        esc_url( wc_get_cart_url() ), 
-        esc_html__( 'Ver carrinho', 'woocommerce' ) 
-    );
-    
-    return $button_html . ' <span class="flex-1">' . $new_text . '</span>';
-}, 10, 2 );
