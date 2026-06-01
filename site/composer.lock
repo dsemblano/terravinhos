@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ecdc4a6691d021371c9cb83d8cfe0099",
+    "content-hash": "aa440cc9fcd3b2d7c6be3f60cb527922",
     "packages": [
         {
             "name": "brick/math",
@@ -7537,78 +7537,16 @@
             "time": "2026-05-28T06:50:54+00:00"
         },
         {
-            "name": "wp-plugin/woocommerce-correios",
-            "version": "4.2.5",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/woocommerce-correios/",
-                "reference": "tags/4.2.5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/woocommerce-correios.4.2.5.zip"
-            },
-            "require": {
-                "composer/installers": "~1.0|~2.0"
-            },
-            "type": "wordpress-plugin",
-            "notification-url": "https://wp-packages.org/downloads",
-            "authors": [
-                {
-                    "name": "Claudio Sanches"
-                }
-            ],
-            "description": "Integration between the Correios and WooCommerce",
-            "homepage": "https://github.com/claudiosanches/woocommerce-correios",
-            "support": {
-                "changelog": "https://wordpress.org/plugins/woocommerce-correios/#developers",
-                "issues": "https://wordpress.org/support/plugin/woocommerce-correios",
-                "source": "https://plugins.svn.wordpress.org/woocommerce-correios"
-            },
-            "time": "2026-03-23T19:23:21+00:00"
-        },
-        {
-            "name": "wp-plugin/woocommerce-extra-checkout-fields-for-brazil",
-            "version": "4.0.2",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/woocommerce-extra-checkout-fields-for-brazil/",
-                "reference": "tags/4.0.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/woocommerce-extra-checkout-fields-for-brazil.4.0.2.zip"
-            },
-            "require": {
-                "composer/installers": "~1.0|~2.0"
-            },
-            "type": "wordpress-plugin",
-            "notification-url": "https://wp-packages.org/downloads",
-            "authors": [
-                {
-                    "name": "Claudio Sanches"
-                }
-            ],
-            "description": "Adds Brazilian checkout fields in WooCommerce",
-            "homepage": "https://github.com/claudiosanches/woocommerce-extra-checkout-fields-for-brazil",
-            "support": {
-                "changelog": "https://wordpress.org/plugins/woocommerce-extra-checkout-fields-for-brazil/#developers",
-                "issues": "https://wordpress.org/support/plugin/woocommerce-extra-checkout-fields-for-brazil",
-                "source": "https://plugins.svn.wordpress.org/woocommerce-extra-checkout-fields-for-brazil"
-            },
-            "time": "2026-03-23T19:23:21+00:00"
-        },
-        {
             "name": "wp-plugin/woocommerce-pdf-invoices-packing-slips",
-            "version": "5.12.2",
+            "version": "5.13.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/woocommerce-pdf-invoices-packing-slips/",
-                "reference": "tags/5.12.2"
+                "reference": "tags/5.13.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/woocommerce-pdf-invoices-packing-slips.5.12.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/woocommerce-pdf-invoices-packing-slips.5.13.0.zip"
             },
             "require": {
                 "composer/installers": "~1.0|~2.0"
@@ -7627,7 +7565,7 @@
                 "issues": "https://wordpress.org/support/plugin/woocommerce-pdf-invoices-packing-slips",
                 "source": "https://plugins.svn.wordpress.org/woocommerce-pdf-invoices-packing-slips"
             },
-            "time": "2026-05-25T09:25:48+00:00"
+            "time": "2026-06-01T15:00:56+00:00"
         },
         {
             "name": "wp-plugin/wp-mail-smtp",
@@ -10100,26 +10038,26 @@
         },
         {
             "name": "sebastian/global-state",
-            "version": "8.0.2",
+            "version": "8.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/global-state.git",
-                "reference": "ef1377171613d09edd25b7816f05be8313f9115d"
+                "reference": "b164d3274d6537ab462591c5755f76a8f5b1aae9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/ef1377171613d09edd25b7816f05be8313f9115d",
-                "reference": "ef1377171613d09edd25b7816f05be8313f9115d",
+                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/b164d3274d6537ab462591c5755f76a8f5b1aae9",
+                "reference": "b164d3274d6537ab462591c5755f76a8f5b1aae9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.3",
                 "sebastian/object-reflector": "^5.0",
-                "sebastian/recursion-context": "^7.0"
+                "sebastian/recursion-context": "^7.0.1"
             },
             "require-dev": {
                 "ext-dom": "*",
-                "phpunit/phpunit": "^12.0"
+                "phpunit/phpunit": "^12.5.28"
             },
             "type": "library",
             "extra": {
@@ -10150,7 +10088,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/global-state/issues",
                 "security": "https://github.com/sebastianbergmann/global-state/security/policy",
-                "source": "https://github.com/sebastianbergmann/global-state/tree/8.0.2"
+                "source": "https://github.com/sebastianbergmann/global-state/tree/8.0.3"
             },
             "funding": [
                 {
@@ -10170,7 +10108,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-08-29T11:29:25+00:00"
+            "time": "2026-06-01T15:10:33+00:00"
         },
         {
             "name": "sebastian/lines-of-code",
