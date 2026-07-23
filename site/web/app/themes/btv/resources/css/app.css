@@ -8,6 +8,7 @@
 @import './zolo-style-index.css';
 /* @import './woocommerce-all.css'; */
 @import "./arrowcdtop.css";
+/* @import "./liquidfill.css"; */
 
 @theme {
   /* azul 2 */
@@ -352,10 +353,13 @@ ul#menu-menu-principal {
 #place_order,
 #submit-payment,
 #fkcart-modal .fkcart-zero-state .fkcart-shop-button,
-.wp-block-button__link,
-.wp-element-button,
 #fkcart-modal .fkcart-checkout-wrap #fkcart-checkout-button {
   @apply cta-second;
+}
+
+.wp-block-button__link,
+.wp-element-button {
+  @apply px-4 py-4 rounded-lg text-base uppercase font-semibold transition text-white bg-primary hover:brightness-[130%] hover:scale-105 shadow-2xl hover:shadow-lg active:scale-95;
 }
 
 #shop_products,
@@ -466,50 +470,6 @@ img,
     /* Subtle zoom to 115% and a slight pan */
     transform: scale(1.15) translate(-2%, -1%);
   }
-}
-
-/* 1. Target the Link specifically */
-.wp-block-button.is-liquid-fill .wp-block-button__link {
-  @apply px-4 py-6 text-lg font-bold;
-
-  position: relative !important;
-  overflow: hidden !important;
-  z-index: 1 !important;
-  background-color: var(--color-transparent) !important;
-  color: white !important;
-  border: 1px solid var(--color-primary) !important;
-  transition: color 0.5s ease !important;
-  display: block;
-  /* Ensures the hover trigger area is fully filled */
-}
-
-/* 2. Create the 'Wine' Liquid */
-.wp-block-button.is-liquid-fill .wp-block-button__link::before {
-  content: "";
-  position: absolute;
-  top: 100%;
-  /* Back to starting below the button */
-  left: -50%;
-  width: 200%;
-  height: 400%;
-  color: var(--wp--preset--color--primary);
-  background-color: var(--wp--preset--color--secondary);
-  border-radius: 38%;
-  z-index: -1;
-  /* THE FIX: Removed the invalid syntax */
-  transition: top 0.7s ease-in-out, transform 1.2s linear;
-}
-
-/* 3. The Pour Animation */
-.wp-block-button.is-liquid-fill:hover .wp-block-button__link::before {
-  top: -150%;
-  transform: rotate(360deg);
-}
-
-/* 4. Text Color Flip (Optimized for your dark theme) */
-.wp-block-button.is-liquid-fill:hover .wp-block-button__link {
-  /* Uses your dark background color for high contrast against the gold fill */
-  color: var(--color-primary) !important;
 }
 
 /* footer {
