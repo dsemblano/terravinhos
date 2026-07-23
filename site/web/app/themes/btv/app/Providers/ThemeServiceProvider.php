@@ -28,6 +28,5 @@ class ThemeServiceProvider extends SageServiceProvider
             'partials.header', // Match the view(s) you specified
             \App\View\Composers\NavigationComposer::class
         );
-        
     }
 }

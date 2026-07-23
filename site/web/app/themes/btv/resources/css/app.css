@@ -4,6 +4,10 @@
 @source "../**/*.js";
 @plugin "@tailwindcss/typography";
 @import './fonts.css';
+@import './fast-public.css';
+@import './zolo-style-index.css';
+/* @import './woocommerce-all.css'; */
+@import "./arrowcdtop.css";
 
 @theme {
   /* azul 2 */
@@ -354,6 +358,10 @@ ul#menu-menu-principal {
       object-fit: cover;
     }
   }
+}
+
+.fkcart-shortcode-container {
+  color: var(--color-offwhite);
 }
 
 img,
