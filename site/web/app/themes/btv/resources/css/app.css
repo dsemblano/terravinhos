@@ -5,7 +5,7 @@
 @plugin "@tailwindcss/typography";
 @import './fonts.css';
 
-@theme static {
+@theme {
   /* azul 2 */
   --color-primary: #4C93A5;
   /* terra */
