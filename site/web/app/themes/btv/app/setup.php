@@ -268,3 +268,86 @@ remove_action('woocommerce_single_product_summary', 'woocommerce_template_single
 
 // A prioridade 60 costuma ser logo após a descrição curta e antes de blocos extras
 add_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 60);
+
+// Otimizações
+
+/**
+ * Função auxiliar interna para centralizar a checagem do ecossistema WooCommerce.
+ * Evita redundância de processamento e mantém o código DRY.
+ */
+function nectar_is_woocommerce_page() {
+    if (function_exists('is_woocommerce')) {
+        return is_woocommerce() || is_cart() || is_checkout() || is_account_page();
+    }
+    return false;
+}
+
+/**
+ * Hook 1: Sniper Dinâmico por URL (Apenas para plugins embutidos no seu app.css)
+ * Executado no wp_print_styles para capturar injeções agressivas dessas ferramentas.
+ */
+add_action('wp_print_styles', function () {
+    global $wp_styles;
+    
+    if (empty($wp_styles->queue)) {
+        return;
+    }
+
+    // CSS que SEMPRE serão removidos (já estão limpos e compilados no seu app.css global)
+    $css_to_always_remove = [
+        'fast-cart/fonts/fontello.css',
+        'fast-cart/public/css/public.min.css',
+        'fast-cart/public/css/public.css',
+        'zoloblocks/build/common/style-index.css',
+        // O WooCommerce muda muito os handles dos blocos, então matamos pela URL por garantia:
+        'woocommerce/assets/client/blocks/wc-blocks.css'
+    ];
+
+    foreach ($wp_styles->queue as $handle) {
+        if (isset($wp_styles->registered[$handle])) {
+            $src = $wp_styles->registered[$handle]->src;
+            
+            foreach ($css_to_always_remove as $css_path) {
+                if (strpos($src, $css_path) !== false) {
+                    wp_dequeue_style($handle);
+                    wp_deregister_style($handle);
+                    break; // Match encontrado para este handle, avança para o próximo da fila
+                }
+            }
+        }
+    }
+}, 100); // AUMENTADO de 1 para 100: Garante que varre a fila depois que todos os plugins já injetaram seus scripts.
+
+/**
+ * Hook 2: Remoção Estática por Handles (WooCommerce Core e Gutenberg Blocks)
+ * Se NÃO for página do Woo, removemos direto pelo ID nativo. Muito mais rápido que varrer strings.
+ */
+add_action('wp_enqueue_scripts', function () {
+    // Se for qualquer página do ecossistema WooCommerce, interrompe e mantém os estilos ativos
+    if (nectar_is_woocommerce_page()) {
+        return;
+    }
+
+    // Handles canônicos do WooCommerce Core e dos blocos do Gutenberg
+    $woocommerce_handles = [
+        // Core Styles
+        'woocommerce-layout',
+        'woocommerce-smallscreen',
+        'woocommerce-general',
+        'woocommerce_frontend_styles',
+        'woocommerce-inline', // Algumas versões do Woo injetam CSS inline aqui
+        
+        // Block Styles (Atualizados para Woo 10.x+)
+        'wc-blocks',
+        'wc-blocks-style',
+        'wc-blocks-packages-style',
+        'wc-blocks-vendors-style',
+        'wc-all-blocks-style',
+        'classic-theme-styles'
+    ];
+
+    foreach ($woocommerce_handles as $handle) {
+        wp_dequeue_style($handle);
+        wp_deregister_style($handle);
+    }
+}, 9999);
