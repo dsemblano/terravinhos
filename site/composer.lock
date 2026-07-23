@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa440cc9fcd3b2d7c6be3f60cb527922",
+    "content-hash": "c847f57d152343afc1c5a6aeb2f8e6bc",
     "packages": [
         {
             "name": "brick/math",
@@ -7326,37 +7326,6 @@
             "time": "2026-05-15T03:01:03+00:00"
         },
         {
-            "name": "wp-plugin/ewww-image-optimizer",
-            "version": "8.7.4",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/ewww-image-optimizer/",
-                "reference": "tags/8.7.4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/ewww-image-optimizer.8.7.4.zip"
-            },
-            "require": {
-                "composer/installers": "~1.0|~2.0"
-            },
-            "type": "wordpress-plugin",
-            "notification-url": "https://wp-packages.org/downloads",
-            "authors": [
-                {
-                    "name": "Shane Bishop"
-                }
-            ],
-            "description": "Comprehensive image optimization with WebP, AVIF, Lazy Load, and more. Optimize images automatically for Faster Sites and Happy Visitors.",
-            "homepage": "https://wordpress.org/plugins/ewww-image-optimizer/",
-            "support": {
-                "changelog": "https://wordpress.org/plugins/ewww-image-optimizer/#developers",
-                "issues": "https://wordpress.org/support/plugin/ewww-image-optimizer",
-                "source": "https://plugins.svn.wordpress.org/ewww-image-optimizer"
-            },
-            "time": "2026-07-16T21:25:47+00:00"
-        },
-        {
             "name": "wp-plugin/fast-cart",
             "version": "1.2.3",
             "source": {
@@ -7419,6 +7388,37 @@
             "time": "2026-07-17T08:31:05+00:00"
         },
         {
+            "name": "wp-plugin/freesoul-deactivate-plugins",
+            "version": "2.6.8",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/freesoul-deactivate-plugins/",
+                "reference": "tags/2.6.8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/freesoul-deactivate-plugins.2.6.8.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0|~2.0"
+            },
+            "type": "wordpress-plugin",
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "Jose Mortellaro"
+                }
+            ],
+            "description": "Load plugins only where you need them. No bloat, no conflicts, more speed. Deactivate plugins where they don't add anything useful.",
+            "homepage": "https://freesoul-deactivate-plugins.com/",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/freesoul-deactivate-plugins/#developers",
+                "issues": "https://wordpress.org/support/plugin/freesoul-deactivate-plugins",
+                "source": "https://plugins.svn.wordpress.org/freesoul-deactivate-plugins"
+            },
+            "time": "2026-07-21T18:01:47+00:00"
+        },
+        {
             "name": "wp-plugin/infixs-correios-automatico",
             "version": "1.7.9",
             "source": {
@@ -7447,6 +7447,67 @@
                 "source": "https://plugins.svn.wordpress.org/infixs-correios-automatico"
             },
             "time": "2026-06-01T00:11:22+00:00"
+        },
+        {
+            "name": "wp-plugin/milosubscriptions",
+            "version": "1.8.4",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/milosubscriptions/",
+                "reference": "tags/1.8.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/milosubscriptions.1.8.4.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0|~2.0"
+            },
+            "type": "wordpress-plugin",
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "Milo Subscriptions"
+                }
+            ],
+            "description": "Free WooCommerce subscriptions and recurring payments, or standalone without WooCommerce. Trials, switching, self-service, and migration tools.",
+            "homepage": "https://milosubscriptions.com",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/milosubscriptions/#developers",
+                "issues": "https://wordpress.org/support/plugin/milosubscriptions",
+                "source": "https://plugins.svn.wordpress.org/milosubscriptions"
+            },
+            "time": "2026-07-22T14:06:04+00:00"
+        },
+        {
+            "name": "wp-plugin/optimole-wp",
+            "version": "4.2.10",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/optimole-wp/",
+                "reference": "tags/4.2.10"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/optimole-wp.4.2.10.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0|~2.0"
+            },
+            "type": "wordpress-plugin",
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "Optimole"
+                }
+            ],
+            "description": "Automatically optimize images with bulk compression, lazy loading, WebP/AVIF conversion & CloudFront image CDN. Boost Core Web Vitals & conversions.",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/optimole-wp/#developers",
+                "issues": "https://wordpress.org/support/plugin/optimole-wp",
+                "source": "https://plugins.svn.wordpress.org/optimole-wp"
+            },
+            "time": "2026-07-15T13:50:54+00:00"
         },
         {
             "name": "wp-plugin/redirection",
