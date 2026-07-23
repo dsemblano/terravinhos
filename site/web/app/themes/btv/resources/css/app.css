@@ -11,11 +11,17 @@
 
 @theme {
   /* azul 2 */
-  --color-primary: #4C93A5;
+  --color-primary: #68324C;
   /* terra */
-  --color-secondary: #7B4718;
-  /* vinho escuro */
-  --color-tertiary: #600716;
+  --color-secondary: #4c93a5;
+  /* azul escuro */
+  --color-tertiary: #4c93a5;
+
+  /* Frosted Blue */
+  /* --color-secondary: #77DBE9; */
+
+  /* Blackberry Cream */
+  /* --color-primary: #68324C; */
   
   /* --color-tertiary-light: #6592A3; */
   /* --color-vinho: #260618; */
@@ -240,17 +246,16 @@ html {
 h1:not(#hero .wp-block-heading, #shop-title, #title-products) {
   font-family: var(--font-heading);
   font-weight: bold;
-  color: var(--color-vinho);
+  color: var(--color-primary);
   /* background-color: red; */
 }
 
 .home h2,
 h2.wp-block-heading,
-.home h3,
 .home .text-primary,
 h4,
 h5 {
-  @apply text-3xl tracking-tight text-secondary;
+  @apply text-3xl tracking-tight text-primary;
 
   font-family: var(--font-heading);
 
@@ -329,6 +334,18 @@ ul#menu-menu-principal {
   @apply flex flex-col lg:flex-row gap-x-8
 }
 
+
+
+/* Second CTA */
+@utility cta-second {
+  @apply px-2 py-2 rounded-lg text-base font-semibold transition text-white bg-primary hover:brightness-[130%] hover:scale-105 hover:shadow-lg active:scale-95;
+}
+
+.product-button,
+.cta-second {
+  @apply cta-second;
+}
+
 /* Main CTA */
 .hero-cta,
 .woocommerce div.product form.cart .single_add_to_cart_button,
@@ -338,11 +355,7 @@ ul#menu-menu-principal {
 .wp-block-button__link,
 .wp-element-button,
 #fkcart-modal .fkcart-checkout-wrap #fkcart-checkout-button {
-  @apply px-2 py-2 rounded-lg text-sm font-bold transition text-white hover:text-white bg-primary hover:scale-105 hover:shadow-lg active:scale-95 border-transparent;
-}
-
-.product-button {
-  @apply px-2 py-2 rounded-lg text-sm font-bold transition text-white hover:text-white bg-primary hover:scale-105 hover:shadow-lg active:scale-95 border-transparent;
+  @apply cta-second;
 }
 
 #shop_products,
@@ -462,7 +475,7 @@ img,
   position: relative !important;
   overflow: hidden !important;
   z-index: 1 !important;
-  background-color: var(--color-primary) !important;
+  background-color: var(--color-transparent) !important;
   color: white !important;
   border: 1px solid var(--color-primary) !important;
   transition: color 0.5s ease !important;
@@ -479,7 +492,8 @@ img,
   left: -50%;
   width: 200%;
   height: 400%;
-  background-color: var(--wp--preset--color--vinho);
+  color: var(--wp--preset--color--primary);
+  background-color: var(--wp--preset--color--secondary);
   border-radius: 38%;
   z-index: -1;
   /* THE FIX: Removed the invalid syntax */
@@ -495,7 +509,7 @@ img,
 /* 4. Text Color Flip (Optimized for your dark theme) */
 .wp-block-button.is-liquid-fill:hover .wp-block-button__link {
   /* Uses your dark background color for high contrast against the gold fill */
-  color: var(--color-fundo) !important;
+  color: var(--color-primary) !important;
 }
 
 /* footer {
@@ -715,6 +729,3 @@ img,
         @apply flex-1 ml-2;
     }
 }
-
-
-

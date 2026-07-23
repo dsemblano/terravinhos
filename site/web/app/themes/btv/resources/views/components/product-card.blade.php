@@ -36,7 +36,7 @@
         {{-- PRICE + CTA (mt-auto pushes this entire block to the very bottom) --}}
         <div class="mt-auto flex flex-col items-center w-full">
             
-            <div class="price text-base lg:text-lg font-bold text-secondary pb-4 pt-2">
+            <div class="price text-base lg:text-lg font-bold text-tertiary pb-4 pt-2">
                 {!! $product->get_price_html() !!}
             </div>
 
@@ -46,8 +46,7 @@
 
             @if( ! $product->is_type('variable') )
             <a href="{{ $outOfStock ? '#' : '?add-to-cart=' . $product->get_id() }}" 
-                @class([
-                    'w-full bg-primary text-white py-2.5 px-4 rounded-xl text-sm font-semibold transition duration-200 hover:bg-opacity-90 text-center' => !$outOfStock,
+                @class(['cta-second' => !$outOfStock,
                     'w-full bg-gray-100 text-gray-400 py-2.5 px-2 rounded-xl text-sm font-semibold text-center cursor-not-allowed pointer-events-none' => $outOfStock,
                 ])
                 aria-disabled="{{ $outOfStock ? 'true' : 'false' }}">

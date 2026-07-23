@@ -3,9 +3,9 @@
     <ul class="hidden lg:flex text-lg lg:text-xl justify-around font-heading">
         @foreach ($primary_navigation as $item)
             {{-- 1. Always render the standard menu item (This keeps "Carrinho" visible) --}}
-            <li class="{{ $item->classes }} hover:text-secondary hover:underline transition duration-300">
+            <li class="{{ $item->classes }} hover:text-primary hover:underline transition duration-300">
                 <a href="{{ $item->url }}"
-                    class="hover:text-secondary {{ $item->active ? 'text-secondary font-semibold' : 'text-gray-800' }}"
+                    class="hover:text-primary {{ $item->active ? 'text-primary font-semibold' : 'text-gray-800' }}"
                     @if ($item->active || $item->activeAncestor) aria-current="{{ $item->active ? 'page' : 'true' }}" @endif>
                     {{ $item->label }}
                 </a>
