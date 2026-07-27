@@ -11,10 +11,15 @@
 /* @import "./liquidfill.css"; */
 
 @theme {
+  /* Marrom logo  */
+  --color-primary: #6693A2;
+  /* Azul logo */
+  --color-secondary: #7C5A2F;
   /* azul 2 */
-  --color-primary: #68324C;
+  /* --color-primary: #68324C; */
+  /* --color-primary: #4c93a5; */
   /* terra */
-  --color-secondary: #4c93a5;
+  /* --color-secondary: #4c93a5; */
   /* azul escuro */
   --color-tertiary: #4c93a5;
 
@@ -30,7 +35,8 @@
 
   /* vinho 2 */
   --color-vinho: #600716;
-  --color-fundo: #F4F4F4;
+  /* --color-fundo: #F4F4F4; */
+  --color-fundo: #FFF;
   /* vinho 3 */
   --color-vinhobg: #800120;
   --color-vinhofg: #F7E8CD;
@@ -247,7 +253,7 @@ html {
 h1:not(#hero .wp-block-heading, #shop-title, #title-products) {
   font-family: var(--font-heading);
   font-weight: bold;
-  color: var(--color-primary);
+  color: var(--color-secondary);
   /* background-color: red; */
 }
 
@@ -256,7 +262,7 @@ h2.wp-block-heading,
 .home .text-primary,
 h4,
 h5 {
-  @apply text-3xl tracking-tight text-primary;
+  @apply text-3xl tracking-tight text-vinho;
 
   font-family: var(--font-heading);
 
@@ -339,7 +345,7 @@ ul#menu-menu-principal {
 
 /* Second CTA */
 @utility cta-second {
-  @apply px-2 py-2 rounded-lg text-base font-semibold transition text-white bg-primary hover:brightness-[130%] hover:scale-105 hover:shadow-lg active:scale-95;
+  @apply px-2 py-2 rounded-lg text-base font-semibold transition text-white bg-vinho hover:brightness-[130%] hover:scale-105 hover:shadow-lg active:scale-95;
 }
 
 .product-button,
