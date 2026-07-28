@@ -1,44 +1,64 @@
-/* 1. Target the Link specifically */
+/* 1. Estilização da "Taça de Vidro" (Botão CTA) */
 .wp-block-button.is-liquid-fill .wp-block-button__link {
-  @apply px-4 py-6 text-lg font-bold;
+  @apply px-8 py-5 text-lg font-bold;
 
   position: relative !important;
   overflow: hidden !important;
   z-index: 1 !important;
-  background-color: var(--color-transparent) !important;
-  color: white !important;
-  border: 1px solid var(--color-primary) !important;
-  transition: color 0.5s ease !important;
-  display: block;
-  /* Ensures the hover trigger area is fully filled */
+  display: inline-block !important;
+
+  /* Formato do Bojo de Taça de Vinho */
+  border-radius: 14px 14px 44px 44px !important;
+
+  /* Efeito Vidro Real (Glassmorphism) */
+  background: rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+
+  /* Borda e Reflexos de Luz no Cristal do Vidro */
+  border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 
+    inset 0 1px 2px rgba(255, 255, 255, 0.6),  /* Brilho na borda superior */
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15),       /* Sombra leve na base da taça */
+    0 8px 32px 0 rgba(0, 0, 0, 0.2) !important; /* Sombra externa projetada */
+
+  color: #ffffff !important;
+  transition: color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease !important;
 }
 
-/* 2. Create the 'Wine' Liquid */
+/* 2. O Líquido (Vinho) preenchendo a taça */
 .wp-block-button.is-liquid-fill .wp-block-button__link::before {
   content: "";
   position: absolute;
-  top: 100%;
-  /* Back to starting below the button */
+  top: 110%; /* Começa totalmente escondido abaixo */
   left: -50%;
   width: 200%;
   height: 400%;
-  color: var(--wp--preset--color--primary);
-  background-color: var(--wp--preset--color--primary);
+  
+  /* Gradiente de Vinho com tom rico para dar profundidade de líquido */
+  background: linear-gradient(
+    180deg, 
+    var(--wp--preset--color--vinho, #722f37) 0%, 
+    #3b0a11 100%
+  ) !important;
+
+  /* Borda arredondada para criar a onda ao girar */
   border-radius: 38%;
   z-index: -1;
-  /* THE FIX: Removed the invalid syntax */
-  transition: top 0.7s ease-in-out, transform 1.2s linear;
+  transition: top 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s linear;
 }
 
-/* 3. The Pour Animation */
+/* 3. A Animação (O vinho sobe ao passar o mouse) */
 .wp-block-button.is-liquid-fill:hover .wp-block-button__link::before {
-  top: -150%;
+  top: -120%;
   transform: rotate(360deg);
 }
 
-/* 4. Text Color Flip (Optimized for your dark theme) */
+/* 4. Estado Hover (Intensifica o brilho da taça cheia) */
 .wp-block-button.is-liquid-fill:hover .wp-block-button__link {
-  /* Uses your dark background color for high contrast against the gold fill */
-  /* color: var(--color-primary) !important; */
-  color: white !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 
+    inset 0 1px 4px rgba(255, 255, 255, 0.8),
+    0 12px 35px rgba(114, 47, 55, 0.4) !important; /* Glow com a cor do vinho ao redor */
 }
