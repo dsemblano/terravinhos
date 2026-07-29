@@ -365,7 +365,7 @@ ul#menu-menu-principal {
 
 .wp-block-button__link,
 .wp-element-button {
-  @apply px-4 py-4 rounded-lg text-base uppercase font-semibold transition text-white bg-primary hover:brightness-[130%] hover:scale-105 shadow-2xl hover:shadow-lg active:scale-95;
+  @apply px-4 py-4 rounded-lg text-base uppercase font-semibold transition text-white bg-vinho hover:brightness-[130%] hover:scale-105 shadow-2xl hover:shadow-lg active:scale-95;
 }
 
 #shop_products,
