@@ -82,6 +82,22 @@
   transition: transform 0.1s ease !important;
 }
 
+/* Estado acionado pelo JavaScript durante o clique */
+.wp-block-button.is-liquid-fill .wp-block-button__link.is-pouring::before {
+  top: -20% !important; /* O vinho sobe cobrindo a taça totalmente antes de ir pra próxima página */
+  transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.wp-block-button.is-liquid-fill .wp-block-button__link.is-pouring::after {
+  top: -10% !important;
+  transition: top 0.55s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.wp-block-button.is-liquid-fill .wp-block-button__link.is-pouring {
+  transform: translateY(-12px) scale(0.98) !important;
+  box-shadow: inset 0 1px 6px rgba(255, 255, 255, 0.9), 0 12px 25px rgba(114, 47, 55, 0.8) !important;
+}
+
 /* 4. KEYFRAMES */
 @keyframes wine-spin {
   0% { transform: rotate(0deg); }
