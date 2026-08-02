@@ -522,6 +522,15 @@ img,
   @apply h-[32rem];
 } */
 
+/* Categoria vinhos página produtos */
+.cat-vinho-tinto {
+  @apply text-white bg-primary;
+}
+
+.cat-vinho-branco {
+  @apply text-black bg-yellow-200;
+}
+
 /* Form */
 .wpcf7-form {
   width: fit-content;
