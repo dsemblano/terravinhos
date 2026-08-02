@@ -226,6 +226,10 @@
   justify-content: center;
   align-items: center;
   padding-block: 2rem;
+
+  .wp-block-zolo-container p {
+    @apply font-heading;
+  }
 }
 
 
@@ -709,4 +713,9 @@ img,
     .single-product form.cart .single_add_to_cart_button {
         @apply flex-1 ml-2;
     }
+}
+
+.home mark {
+  color: var(--color-tertiary);
+  background-color: transparent;
 }
