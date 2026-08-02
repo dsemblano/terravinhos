@@ -46,6 +46,9 @@
                         @while(have_posts()) 
                             @php 
                                 the_post();
+                                if (has_term('assinatura', 'product_cat', get_the_ID())) {
+                                    continue;
+                                }
                                 // We get the global product object for your component
                                 $product = wc_get_product(get_the_ID()); 
                             @endphp
