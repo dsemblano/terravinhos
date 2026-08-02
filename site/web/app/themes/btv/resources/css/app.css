@@ -12,7 +12,8 @@
 
 @theme {
   /* Marrom logo  */
-  --color-primary: #6693A2;
+  /* --color-primary: #6693A2; */
+  --color-primary: #600716;
   /* Azul logo */
   --color-secondary: #7C5A2F;
   /* azul 2 */
@@ -350,7 +351,7 @@ ul#menu-menu-principal {
 
 /* Second CTA */
 @utility cta-second {
-  @apply px-2 py-2 rounded-lg text-base font-semibold transition text-white bg-vinho hover:brightness-[130%] hover:scale-105 hover:shadow-lg active:scale-95;
+  @apply px-2 py-2 rounded-lg text-base font-semibold transition text-white bg-tertiary hover:brightness-[130%] hover:scale-105 hover:shadow-lg active:scale-95;
 }
 
 .product-button,

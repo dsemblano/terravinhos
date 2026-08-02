@@ -2,6 +2,11 @@
 
 @php
     /** @var WC_Product $product */
+    
+    // Pega as categorias cadastradas na taxonomia do WooCommerce
+    $terms = get_the_terms($product->get_id(), 'product_cat');
+    // Pega o nome da primeira categoria encontrada (se existir)
+    $category_name = ($terms && !is_wp_error($terms)) ? $terms[0]->name : null;
 @endphp
 
 <div class="group not-prose relative flex flex-col h-full bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden pb-5">
@@ -24,10 +29,17 @@
     </div>
 
     {{-- CONTENT BLOCK --}}
-    <div class="flex flex-col flex-grow px-4 pt-4 text-center">
+    <div class="flex flex-col flex-grow pt-4 text-center">
+
+        {{-- CATEGORIA DO PRODUTO (Tag discreta acima do título) --}}
+        @if ($category_name)
+            <span class="text-xs py-2 uppercase tracking-wider font-bold text-white mb-1 block bg-primary">
+                {{ $category_name }}
+            </span>
+        @endif
         
         {{-- TITLE (Displays fully, no matter how many lines) --}}
-        <h3 class="text-sm lg:text-base font-semibold leading-snug text-vinho mb-0 hover:text-primary transition-colors">
+        <h3 class="text-sm lg:text-base font-semibold py-2 leading-snug text-secondary mb-0 hover:text-primary transition-colors">
             <a href="{{ get_permalink($product->get_id()) }}" class="">
                 {{ $product->get_name() }}
             </a>
@@ -36,7 +48,7 @@
         {{-- PRICE + CTA (mt-auto pushes this entire block to the very bottom) --}}
         <div class="mt-auto flex flex-col items-center w-full">
             
-            <div class="price text-base lg:text-lg font-bold text-secondary pb-4 pt-2">
+            <div class="price text-base lg:text-lg font-bold text-tertiary pb-4 pt-2">
                 {!! $product->get_price_html() !!}
             </div>
 
