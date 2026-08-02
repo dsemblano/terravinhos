@@ -431,9 +431,24 @@ add_action('woocommerce_order_status_completed', function ($order_id) {
 });
 
 /**
- * 4. Filter the active product price for Wine Club members across the entire store.
+ * Helper: Check if a product is a subscription product (Native Woo or Milo).
  */
+function is_subscription_product($product): bool
+{
+    if (!$product || !is_a($product, 'WC_Product')) {
+        return false;
+    }
 
+    // Check 1: Native WooCommerce Subscriptions types
+    if (in_array($product->get_type(), ['subscription', 'variable-subscription'])) {
+        return true;
+    }
+
+    // Check 2: Milo Subscriptions meta key
+    $sub_period = get_post_meta($product->get_id(), '_subscription_period', true);
+
+    return !empty($sub_period);
+}
 
 /**
  * 1. Filter raw numeric price for simple products and individual variation instances.
@@ -448,7 +463,7 @@ function apply_club_member_discount($price, $product) {
     }
 
     // Do NOT apply discounts to subscription products themselves
-    if (in_array($product->get_type(), ['subscription', 'variable-subscription'])) {
+    if (is_subscription_product($product)) {
         return $price;
     }
 
@@ -463,14 +478,15 @@ add_filter('woocommerce_product_get_price', __NAMESPACE__ . '\\apply_club_member
 add_filter('woocommerce_product_variation_get_price', __NAMESPACE__ . '\\apply_club_member_discount', 99, 2);
 
 /**
- * 2. NEW: Filter the variation prices array for Variable Products (min/max range calculations).
+ * 2. Filter the variation prices array for Variable Products (min/max range calculations).
  */
 add_filter('woocommerce_variation_prices', function ($prices_array, $product, $for_display) {
     if (is_admin() && !defined('DOING_AJAX')) {
         return $prices_array;
     }
 
-    if (in_array($product->get_type(), ['subscription', 'variable-subscription'])) {
+    // Do NOT apply discounts to variable subscription products
+    if (is_subscription_product($product)) {
         return $prices_array;
     }
 
@@ -510,7 +526,7 @@ add_filter('woocommerce_get_price_html', function ($price_html, $product) {
     }
 
     // Do not alter subscription products
-    if (in_array($product->get_type(), ['subscription', 'variable-subscription'])) {
+    if (is_subscription_product($product)) {
         return $price_html;
     }
 
