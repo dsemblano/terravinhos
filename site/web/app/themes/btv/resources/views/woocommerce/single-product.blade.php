@@ -23,13 +23,34 @@ the readme will list any important changes.
     @endphp
 
     @while (have_posts())
-        <section id="shop_single_products" class="bg-white pt-8">
-            <div class="container">
-                @php
-                    the_post();
-                    wc_get_template_part('content', 'single-product');
-                @endphp
-            </div>
+        @php
+            the_post();
+            $product = wc_get_product(get_the_ID());
+
+            // Check using verified meta keys from Milo (_subscription_period or _subscription_price)
+            $isMiloSubscription = $product && (
+                !empty(get_post_meta($product->get_id(), '_subscription_period', true)) ||
+                !empty(get_post_meta($product->get_id(), '_subscription_price', true))
+            );
+        @endphp
+
+        @if ($isMiloSubscription)
+            {{-- 1. MILO WINE CLUB LAYOUT --}}
+            <section id="shop_single_club_product" class="bg-white pt-8 pb-16">
+                <div class="container">
+                    @include('partials.content-single-product-club', ['product' => $product])
+                </div>
+            </section>
+        @else
+            {{-- 2. STANDARD BOTTLE PRODUCT LAYOUT --}}
+            <section id="shop_single_products" class="bg-white pt-8">
+                <div class="container">
+                    @php
+                        wc_get_template_part('content', 'single-product');
+                    @endphp
+                </div>
+            </section>
+        @endif
     @endwhile
 
     @php
@@ -37,8 +58,11 @@ the readme will list any important changes.
         do_action('get_sidebar', 'shop');
         do_action('get_footer', 'shop');
     @endphp
-    </section>
-    <div class="container flex flex-col lg:flex-row lg:justify-between">
-        {!! woocommerce_output_related_products() !!}
-    </div>
+
+    {{-- Show related products ONLY for standard wine bottles --}}
+    @if (isset($isMiloSubscription) && !$isMiloSubscription)
+        <div class="container flex flex-col lg:flex-row lg:justify-between">
+            {!! woocommerce_output_related_products() !!}
+        </div>
+    @endif
 @endsection
