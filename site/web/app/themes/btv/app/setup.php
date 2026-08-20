@@ -237,30 +237,6 @@ add_action('woocommerce_single_product_summary', function () {
     echo view('woocommerce.single.specs')->render();
 }, 25);
 
-// add_action('woocommerce_single_product_summary', function () {
-//   echo view('woocommerce.single.cta')->render();
-// }, 30);
-
-// add_action('mytheme_product_cta', function () {
-//   echo view('woocommerce.single.cta')->render();
-// });
-
-// Source - https://stackoverflow.com/a/64867693
-// Posted by Jeremiah Deasey
-// Retrieved 2026-01-10, License - CC BY-SA 4.0
-
-
-add_action('wp_enqueue_scripts', function () {
-    if (!is_page(array('cadastre-sua-vinicola'))) {
-        wp_dequeue_script('contact-form-7');
-        wp_dequeue_style('contact-form-7');
-
-        /* these are both needed */
-        wp_dequeue_script('wpcf7-recaptcha');
-        wp_dequeue_script('google-recaptcha');
-    }
-}, 99);
-
 /**
  * Posiciona o formulário de variações exatamente antes das especificações
  */
@@ -268,6 +244,47 @@ remove_action('woocommerce_single_product_summary', 'woocommerce_template_single
 
 // A prioridade 60 costuma ser logo após a descrição curta e antes de blocos extras
 add_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 60);
+
+// pdf
+/**
+ * Adiciona CPF/CNPJ ao PDF da WebToffee (Filtro)
+ */
+add_filter('wf_pklist_alter_billing_address', function ($billing_address, $template_type, $order) {
+    $validate_doc = function ($value, $type) {
+        $clean = preg_replace('/[^0-9]/', '', $value);
+        return ($type === 'cpf') ? (strlen($clean) === 11) : (strlen($clean) === 14);
+    };
+
+    $cpf  = $order->get_meta('_billing_cpf');
+    $cnpj = $order->get_meta('_billing_cnpj');
+
+    if (!empty($cpf) && $validate_doc($cpf, 'cpf')) {
+        $billing_address['nectar_cpf'] = '<br><strong>CPF:</strong> ' . esc_html($cpf);
+    }
+
+    if (!empty($cnpj) && $validate_doc($cnpj, 'cnpj')) {
+        $billing_address['nectar_cnpj'] = '<br><strong>CNPJ:</strong> ' . esc_html($cnpj);
+    }
+
+    return $billing_address;
+}, 10, 3);
+
+/**
+ * Adiciona CPF/CNPJ aos E-mails (Ação)
+ * Corrigido para evitar o Parse Error de string inesperada
+ */
+add_action('woocommerce_email_customer_details', function ($order, $sent_to_admin, $plain_text) {
+    $cpf  = $order->get_meta('_billing_cpf');
+    $cnpj = $order->get_meta('_billing_cnpj');
+
+    // Usamos printf para garantir que o HTML seja tratado como string
+    if ($cpf) {
+        printf('<p><strong>CPF:</strong> %s</p>', esc_html($cpf));
+    }
+    if ($cnpj) {
+        printf('<p><strong>CNPJ:</strong> %s</p>', esc_html($cnpj));
+    }
+}, 25, 3);
 
 // Otimizações
 
@@ -352,222 +369,117 @@ add_action('wp_enqueue_scripts', function () {
     }
 }, 9999);
 
-/**
- * 1. Register the 'wine_club_member' role so it's selectable in WP Admin.
- */
-add_action('init', function () {
-    if (!get_role('wine_club_member')) {
-        add_role('wine_club_member', __('Sócio Clube Brava Terra', 'sage'), [
-            'read' => true,
-        ]);
-    }
+
+// WhatsApp shotrcode
+add_shortcode('whatsapp_button', function ($atts) {
+    // Define os atributos padrão do shortcode
+    $attributes = shortcode_atts([
+        'number'  => '5596991955990',
+        'text'    => 'Falar no WhatsApp',
+        'message' => 'Olá! Gostaria de mais informações.',
+        'class'   => '',
+    ], $atts);
+
+    // Renderiza a view do Blade e retorna como string para o WordPress
+    return view('shortcodes.whatsapp', $attributes)->render();
 });
 
 /**
- * Helper: Check if a user is an active Wine Club subscriber.
+ * Shortcode para renderizar o grid de posts do blog com paginação [loop_posts]
  */
-function user_has_active_club_subscription($user_id = null): bool
-{
-    if (!$user_id) {
-        $user_id = get_current_user_id();
-    }
-    if (!$user_id) {
-        return false;
-    }
+add_shortcode('loop_posts', function ($atts) {
+    $atts = shortcode_atts([
+        'limit'    => 6,
+        'category' => 'blog',
+    ], $atts, 'loop_posts');
 
-    $user = get_userdata($user_id);
-    if (!$user) {
-        return false;
-    }
+    // Captura a página atual
+    $paged = get_query_var('paged') ? get_query_var('paged') : (get_query_var('page') ? get_query_var('page') : 1);
 
-    // Check 1: Explicit WP Role
-    if (in_array('wine_club_member', (array) $user->roles)) {
-        return true;
-    }
-
-    // Check 2: Query Milo / WooCommerce Subscriptions for an active record
-    $active_subs = get_posts([
-        'post_type'   => ['milo_subscription', 'shop_subscription'],
-        'post_status' => ['active', 'wc-active', 'publish'],
-        'author'      => $user_id,
-        'numberposts' => 1,
-        'fields'      => 'ids',
+    $query = new \WP_Query([
+        'post_type'      => 'post',
+        'posts_per_page' => (int) $atts['limit'],
+        'category_name'  => $atts['category'],
+        'post_status'    => 'publish',
+        'paged'          => $paged,
     ]);
 
-    return !empty($active_subs);
-}
+    if (! $query->have_posts()) {
+        return '';
+    }
 
-/**
- * 2. Assign role automatically when Milo subscriptions are created or updated in WP Admin.
- */
-add_action('save_post', function ($post_id, $post) {
-    if ($post && in_array($post->post_type, ['milo_subscription', 'shop_subscription'])) {
-        $user_id = $post->post_author;
-        if ($user_id && in_array($post->post_status, ['active', 'wc-active', 'publish'])) {
-            $user = new \WP_User($user_id);
-            $user->add_role('wine_club_member');
+    $pagination = '';
+    if ($query->max_num_pages > 1) {
+        $big = 999999999;
+
+        // Tipo 'plain' gera as tags <a> e <span> nativas do get_the_posts_pagination
+        $links = paginate_links([
+            'base'      => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+            'format'    => '?paged=%#%',
+            'current'   => max(1, $paged),
+            'total'     => $query->max_num_pages,
+            'prev_text' => '« Anterior',
+            'next_text' => 'Próximo »',
+            'type'      => 'plain',
+        ]);
+
+        if ($links) {
+            // Envelope idêntico ao do get_the_posts_pagination()
+            $pagination  = '<nav class="navigation pagination" aria-label="' . esc_attr__('Navegação de posts', 'sage') . '">';
+            $pagination .= '<h2 class="screen-reader-text sr-only">' . __('Navegação de posts', 'sage') . '</h2>';
+            $pagination .= '<div class="nav-links">' . $links . '</div>';
+            $pagination .= '</nav>';
         }
     }
-}, 10, 2);
+
+    $output = \Roots\view('shortcodes.posts-loop', [
+        'query'      => $query,
+        'pagination' => $pagination,
+    ])->render();
+
+    wp_reset_postdata();
+
+    return $output;
+});
 
 /**
- * 3. Assign role when a standard checkout order completes.
+ * 1. Faz os links de breadcrumbs/plugins apontarem direto para /blog/
  */
-add_action('woocommerce_order_status_completed', function ($order_id) {
-    $order = wc_get_order($order_id);
-    if (!$order) return;
+add_filter('term_link', function ($url, $term, $taxonomy) {
+    if ($taxonomy === 'category' && $term->slug === 'blog') {
+        return home_url('/blog/');
+    }
 
-    $user_id = $order->get_user_id();
-    if (!$user_id) return;
+    return $url;
+}, 10, 3);
 
-    foreach ($order->get_items() as $item) {
-        $product = $item->get_product();
-        if ($product && $product->get_type() === 'subscription') {
-            $user = new \WP_User($user_id);
-            $user->add_role('wine_club_member');
-            break;
-        }
+/**
+ * 2. Redireciona 301 a página de arquivo /category/blog/ para /blog/
+ */
+add_action('template_redirect', function () {
+    if (is_category('blog')) {
+        wp_redirect(home_url('/blog/'), 301);
+        exit;
     }
 });
 
 /**
- * Helper: Check if a product is a subscription product (Native Woo or Milo).
+ * 1. Faz os links de breadcrumbs/plugins da categoria de produto 'mel' apontarem para /loja/
  */
-function is_subscription_product($product): bool
-{
-    if (!$product || !is_a($product, 'WC_Product')) {
-        return false;
+add_filter('term_link', function ($url, $term, $taxonomy) {
+    if ($taxonomy === 'product_cat' && is_object($term) && $term->slug === 'mel') {
+        return home_url('/loja/');
     }
 
-    // Check 1: Native WooCommerce Subscriptions types
-    if (in_array($product->get_type(), ['subscription', 'variable-subscription'])) {
-        return true;
-    }
-
-    // Check 2: Milo Subscriptions meta key
-    $sub_period = get_post_meta($product->get_id(), '_subscription_period', true);
-
-    return !empty($sub_period);
-}
+    return $url;
+}, 10, 3);
 
 /**
- * 1. Filter raw numeric price for simple products and individual variation instances.
+ * 2. Redireciona 301 a página de arquivo da categoria /product-category/mel/ para /loja/
  */
-function apply_club_member_discount($price, $product) {
-    if (is_admin() && !defined('DOING_AJAX')) {
-        return $price;
+add_action('template_redirect', function () {
+    if (function_exists('is_product_category') && is_product_category('mel')) {
+        wp_redirect(home_url('/loja/'), 301);
+        exit;
     }
-
-    if ($price === '' || $price === null || !is_numeric($price) || (float) $price <= 0) {
-        return $price;
-    }
-
-    // Do NOT apply discounts to subscription products themselves
-    if (is_subscription_product($product)) {
-        return $price;
-    }
-
-    if (function_exists('\App\user_has_active_club_subscription') && \App\user_has_active_club_subscription()) {
-        return (float) $price * 0.90;
-    }
-
-    return $price;
-}
-
-add_filter('woocommerce_product_get_price', __NAMESPACE__ . '\\apply_club_member_discount', 99, 2);
-add_filter('woocommerce_product_variation_get_price', __NAMESPACE__ . '\\apply_club_member_discount', 99, 2);
-
-/**
- * 2. Filter the variation prices array for Variable Products (min/max range calculations).
- */
-add_filter('woocommerce_variation_prices', function ($prices_array, $product, $for_display) {
-    if (is_admin() && !defined('DOING_AJAX')) {
-        return $prices_array;
-    }
-
-    // Do NOT apply discounts to variable subscription products
-    if (is_subscription_product($product)) {
-        return $prices_array;
-    }
-
-    if (function_exists('\App\user_has_active_club_subscription') && \App\user_has_active_club_subscription()) {
-        if (!empty($prices_array['price']) && is_array($prices_array['price'])) {
-            foreach ($prices_array['price'] as $variation_id => $price) {
-                if (is_numeric($price) && (float) $price > 0) {
-                    $prices_array['price'][$variation_id] = (float) $price * 0.90;
-                }
-            }
-        }
-    }
-
-    return $prices_array;
-}, 99, 3);
-
-/**
- * 3. Force WooCommerce variation price transient cache to differentiate members vs guests.
- */
-add_filter('woocommerce_variation_prices_hash', function ($hash) {
-    $is_member = function_exists('\App\user_has_active_club_subscription') && \App\user_has_active_club_subscription();
-    $hash[] = $is_member ? 'wine_club_member' : 'guest_or_regular';
-    return $hash;
 });
-
-/**
- * 4. Format HTML price display across shop, archive, and product pages.
- */
-add_filter('woocommerce_get_price_html', function ($price_html, $product) {
-    if (is_admin() && !defined('DOING_AJAX')) {
-        return $price_html;
-    }
-
-    // Do nothing if product has no price set or price HTML is empty
-    if (empty($price_html) || $product->get_price() === '' || $product->get_price() === null) {
-        return $price_html;
-    }
-
-    // Do not alter subscription products
-    if (is_subscription_product($product)) {
-        return $price_html;
-    }
-
-    if (function_exists('\App\user_has_active_club_subscription') && \App\user_has_active_club_subscription()) {
-        
-        // Simple & Single Variation Products
-        if ($product->is_type('simple') || $product->is_type('variation')) {
-            $regular_price = $product->get_regular_price();
-            $discounted_price = $product->get_price();
-
-            if ($regular_price && (float) $regular_price > (float) $discounted_price) {
-                $price_html = wc_format_sale_price(
-                    wc_price($regular_price),
-                    wc_price($discounted_price)
-                );
-            }
-        } 
-        // Variable Products
-        elseif ($product->is_type('variable')) {
-            $min_reg  = $product->get_variation_regular_price('min', true);
-            $max_reg  = $product->get_variation_regular_price('max', true);
-            $min_disc = $product->get_variation_price('min', true);
-            $max_disc = $product->get_variation_price('max', true);
-
-            if ($min_disc && $max_disc) {
-                if ($min_disc === $max_disc && $min_reg === $max_reg) {
-                    $price_html = wc_format_sale_price(
-                        wc_price($min_reg),
-                        wc_price($min_disc)
-                    );
-                } else {
-                    $reg_range  = ($min_reg === $max_reg) ? wc_price($min_reg) : wc_format_price_range($min_reg, $max_reg);
-                    $disc_range = ($min_disc === $max_disc) ? wc_price($min_disc) : wc_format_price_range($min_disc, $max_disc);
-
-                    $price_html = wc_format_sale_price($reg_range, $disc_range);
-                }
-            }
-        }
-
-        $price_html .= ' <span class="text-xs font-normal text-vinho opacity-75 ml-1">(Preço de Sócio)</span>';
-    }
-
-    return $price_html;
-}, 100, 2);

@@ -41,7 +41,10 @@ defined( 'ABSPATH' ) || exit;
 
 		<?php else : ?>
 
-			<?php wc_get_template( 'checkout/order-received.php', array( 'order' => $order ) ); ?>
+			<h1 class="bg-mel mt-6 text-xl font-bold text-white px-4 py-2 rounded">
+				<?php wc_get_template( 'checkout/order-received.php', array( 'order' => $order ) ); ?>
+			</h1>
+			
 
 			<ul class="woocommerce-order-overview woocommerce-thankyou-order-details order_details">
 
